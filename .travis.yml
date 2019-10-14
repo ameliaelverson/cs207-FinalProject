@@ -1,1 +1,14 @@
+# Set the build language to Python
 language: python
+
+# Install the codecov pip dependency
+install:
+  - pip install codecov
+  
+# Run the unit test
+script:
+  - coverage runt tests.py
+  
+# Push the results back to codecov
+after_success:
+  - codecov
