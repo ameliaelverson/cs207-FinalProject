@@ -1,17 +1,11 @@
-# Set the build language to Python
 language: python
-
-# Set version to 2.7
-python: 2.7
-
-# Install the codecov pip dependency
-install:
+python: 
+  - "3.6"
+before_install:
+  - pip install pytest pytest-cov
   - pip install codecov
-  
-# Run the unit test
 script:
-  - coverage runt tests.py
-  
-# Push the results back to codecov
+  - pytest --cov=./
 after_success:
   - codecov
+
