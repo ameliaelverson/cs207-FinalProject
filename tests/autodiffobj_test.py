@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
-from autodiff_32 import AutoDiffObj
-from autodiff_32 import Elementary
+from autodiff-32 import AutoDiffObj
+from autodiff-32 import Elementary
 
 ### TO BE UPDATED WITH PYTEST ###
 
