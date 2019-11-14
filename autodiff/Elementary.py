@@ -56,3 +56,21 @@ def atan(x):
         return AutoDiffObj.AutoDiff(atan(x.val), (1/(1 + x.val ** 2)) * x.der)
     except Exception:
     	return np.atan(x)
+
+def sinh(x):
+    try:
+        return AutoDiffObj.AutoDiff(np.sinh(x.val), x.der*np.cosh(x.val))
+    except Exception:
+        return np.sinh(x)
+
+def cosh(x):
+    try:
+        return AutoDiffObj.AutoDiff(np.cosh(x.val), x.der*np.sinh(x.val))
+    except Exception:
+        return np.cosh(x)
+
+def tanh(x):
+    try:
+        return AutoDiffObj.AutoDiff(np.tanh(x.val), x.der*(1 - np.tanh(x.val) ** 2))
+    except Exception:
+        return np.tanh(x)

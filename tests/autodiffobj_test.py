@@ -1,6 +1,10 @@
+import pytest
 import numpy as np
-from Elementary import *
-from AutoDiffObj import AutoDiff
+from autodiff import AutoDiffObj
+from autodiff import Elementary
+
+### TO BE UPDATED WITH PYTEST ###
+
 
 # Demo  for single input function
 # (checked answers using wolframalpha.com)
