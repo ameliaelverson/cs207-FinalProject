@@ -8,7 +8,7 @@ import numpy as np
 
 # Demo  for single input function
 # (checked answers using wolframalpha.com)
-X = AutoDiff(3)
+#X = AutoDiff(3)
 
 
 # # testing division
@@ -36,22 +36,22 @@ X = AutoDiff(3)
 
 
 # testing exp
-print("\ntesting exp:")
-func = exp(X**2)
-print("value of function:",func.val)
-print("derivative with respect to X: ",func.der)
-print("Jacobian:", func.Jacobian())
+# print("\ntesting exp:")
+# func = exp(X**2)
+# print("value of function:",func.val)
+# print("derivative with respect to X: ",func.der)
+# print("Jacobian:", func.Jacobian())
 
-# testing sin
-print("\ntesting sin:")
-func = sin(X**2 + 1)
-print("value of function:",func.val)
-print("derivative with respect to X: ",func.der)
-print("Jacobian:", func.Jacobian())
+# # testing sin
+# print("\ntesting sin:")
+# func = sin(X**2 + 1)
+# print("value of function:",func.val)
+# print("derivative with respect to X: ",func.der)
+# print("Jacobian:", func.Jacobian())
 
-# testing something complicated
-print("\ntesting something complicated:")
-func = exp(sin(X**2 + X))
-print("value of function:",func.val)
-print("derivative with respect to X: ",func.der)
-print("Jacobian:", func.Jacobian())
+# # testing something complicated
+# print("\ntesting something complicated:")
+# func = exp(sin(X**2 + X))
+# print("value of function:",func.val)
+# print("derivative with respect to X: ",func.der)
+# print("Jacobian:", func.Jacobian())
