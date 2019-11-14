@@ -5,6 +5,8 @@ before_install:
   - pip install -U pytest 
   - pip install pytest-cov
   - pip install -U codecov
+install:
+  - pip install autodiff-32
 script:
   - pytest --cov=./
 after_success:
