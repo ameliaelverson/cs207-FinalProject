@@ -1,3 +1,4 @@
+import numpy as np
 
 class Multi_AutoDiff_Creator:
 

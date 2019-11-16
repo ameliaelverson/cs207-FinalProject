@@ -8,9 +8,9 @@ class AutoDiff():
 
     def __mul__(self, other): # overload multiplication
         try:
-        	return AutoDiff(self.val * other.val, (self.val * other.der) + (self.der * other.val))
-    	except AttributeError:
-    		return AutoDiff(self.val * other, self.der * other)
+            	return AutoDiff(self.val * other.val, (self.val * other.der) + (self.der * other.val))
+        except AttributeError:
+        		return AutoDiff(self.val * other, self.der * other)
 
 
     def __rmul__(self, other): # overload reverse multiplication
@@ -19,9 +19,9 @@ class AutoDiff():
 
     def __add__(self, other): # overload addition
         try:
-        	return AutoDiff(self.val + other.val, self.der + other.der)
-    	except AttributeError:
-    		return AutoDiff(self.val + other, self.der)
+            	return AutoDiff(self.val + other.val, self.der + other.der)
+        except AttributeError:
+        		return AutoDiff(self.val + other, self.der)
 
 
     def __radd__(self, other): # overload reverse addition
@@ -33,16 +33,15 @@ class AutoDiff():
     
     def __sub__(self, other): # overload subtraction
         try:
-        	return AutoDiff(self.val - other.val, self.der - other.der)
-    	except AttributeError:
-    		return AutoDiff(self.val - other, self.der)
+            	return AutoDiff(self.val - other.val, self.der - other.der)
+        except AttributeError:
+        		return AutoDiff(self.val - other, self.der)
 
     def __rsub__(self,other): # overload subtraction, ensures commutativity of subtraction
         try:
-        	return AutoDiff(other.val - self.val, other.der - self.der)
-    	except AttributeError:
-    		return AutoDiff(other - self.val, self.der * -1)
-
+            	return AutoDiff(other.val - self.val, other.der - self.der)
+        except AttributeError:
+        		return AutoDiff(other - self.val, self.der * -1)
 
     def __pow__(self,other): # overload power
         try:
@@ -52,7 +51,6 @@ class AutoDiff():
     
     def __rpow__(self, other): # overload reverse power
         return AutoDiff(other ** self.val, other ** self.val * np.log(other) * self.der)
-
     
     def __truediv__(self,other): # overload true division
         return self * (other ** -1)
@@ -61,11 +59,10 @@ class AutoDiff():
         return other * (self ** -1)
     
     def __str__(self): # overload string
-    	return "f(x) = {:.2f}, f'(x) = {:.2f}".format(self.val, self.der)
+        	return "f(x) = {:.2f}, f'(x) = {:.2f}".format(self.val, self.der)
 
-	def __eq__(self, other): # overload equality
-		return (self.val == other.val and self.der == other.der)
-
+    def __eq__(self, other): # overload equality
+        return (self.val == other.val and self.der == other.der)
 
     def Jacobian(self):
         """

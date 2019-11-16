@@ -5,12 +5,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
 	name = "autodiff32",
-	version = "0.0.1",
+	version = "0.0.8",
 	author = "Amelia Elverson, Aaron Jacobson, Eric Moreira, Lin Zhu",
 	author_email = "aelverson@mba2020.hbs.edu",
 	description = "Automatic Differentiator",
 	url = "https://github.com/ELAA207/cs207-FinalProject",
 	packages = setuptools.find_packages(),
+	install_requires=[
+		'numpy'],
 	long_description = long_description,
 	long_description_content_type = "text/markdown",
 	classifiers = [

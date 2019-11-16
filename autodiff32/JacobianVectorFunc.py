@@ -1,3 +1,5 @@
+import numpy as np
+
 class Jacobian:
 	def __init__(self,vector_func):
 		self.function = vector_func
