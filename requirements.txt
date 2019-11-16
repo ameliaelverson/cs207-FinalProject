@@ -1,1 +1,2 @@
--e git+://github.com/ELAA207/cs207-FinalProject.git#egg=autodiff32
+autodiff32==0.0.3
+numpy==1.17.4

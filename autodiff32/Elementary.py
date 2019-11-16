@@ -1,5 +1,5 @@
 import numpy as np
-import AutoDiffObj
+from autodiff32 import AutoDiffObj
 
 # Implementing elemental functions
 def exp(x):
