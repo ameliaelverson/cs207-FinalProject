@@ -42,7 +42,7 @@ def asin(x):
     try:
         return AutoDiffObj.AutoDiff(asin(x.val), (1/np.sqrt(1 - x.val**2)) * x.der)
     except Exception:
-        	return np.asin(x)
+        	return np.arcsin(x)
     
 def acos(x):
     try:
@@ -54,7 +54,7 @@ def atan(x):
     try:
         return AutoDiffObj.AutoDiff(atan(x.val), (1/(1 + x.val ** 2)) * x.der)
     except Exception:
-        	return np.atan(x)
+        	return np.arctan(x)
 
 def sinh(x):
     try:
