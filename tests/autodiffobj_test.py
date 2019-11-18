@@ -33,9 +33,6 @@ def test_multivar():
     func = 5*x + 3*y
     assert np.all(func.Jacobian() == [5, 3])
 
-def test_badinput():
-    with pytest.raises():
-        ad.AutoDiff("abc")
 
 
 
