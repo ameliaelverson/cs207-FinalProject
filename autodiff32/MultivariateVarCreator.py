@@ -1,4 +1,5 @@
 import numpy as np
+import autodiff32 as ad
 
 class Multi_AutoDiff_Creator:
 
@@ -27,5 +28,5 @@ class Multi_AutoDiff_Creator:
         i = 0 
         self.Vars =[]
         for key, value in kwargs.items():
-            self.Vars.append(AutoDiff(value,deri[i]))
+            self.Vars.append(ad.AutoDiff(value,deri[i]))
             i+=1
