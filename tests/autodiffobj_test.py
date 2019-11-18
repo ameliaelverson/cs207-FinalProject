@@ -1,57 +1,41 @@
 import pytest
 import numpy as np
-#from autodiff32 import AutoDiffObj
-#from autodiff32 import Elementary
-
-### TO BE UPDATED WITH PYTEST ###
+import autodiff32 as ad
 
 
-# Demo  for single input function
-# (checked answers using wolframalpha.com)
-#X = AutoDiff(3)
+def test_submulti():
+    x = ad.AutoDiff(3)
+    func = x*5 - 2*x
+    assert (func.val, func.der, func.Jacobian()) == (9, 3, 3)
 
 
-# # testing division
-# print("\ntesting division:")
-# func = 1/X**2
-# print("value of function:",func.val)
-# print("derivative with respect to X: ",func.der)
-# print("Jacobian:", func.Jacobian())
-
-# # testing exponents
-# print("\ntesting exponents:")
-# func = X**2
-# print("value of function:",func.val)
-# print("derivative with respect to X: ",func.der)
-# print("Jacobian:", func.Jacobian())
+def test_addnegexp():
+    x = ad.AutoDiff(5)
+    func = -x + 2*x**2
+    assert(func.val, func.der, func.Jacobian()) == (45, 19, 19)
 
 
-
-# # testing exponents
-# print("\ntesting exponents:")
-# func = 2**(X**2)
-# print("value of function:",func.val)
-# print("derivative with respect to X: ",func.der)
-# print("Jacobian:", func.Jacobian())
+def test_revpower():
+    x = ad.AutoDiff(2)
+    func = 2**x
+    assert(func.val, func.der, func.Jacobian()) == (4, 4*np.log(2), 4*np.log(2))
 
 
-# testing exp
-# print("\ntesting exp:")
-# func = exp(X**2)
-# print("value of function:",func.val)
-# print("derivative with respect to X: ",func.der)
-# print("Jacobian:", func.Jacobian())
+def test_jacobian():
+    x = ad.AutoDiff(5, np.array([1, 0]))
+    y = ad.AutoDiff(3, np.array([0, 1]))
+    func = 5*x + 3*y
+    assert np.all(func.Jacobian() == [5, 3])
 
-# # testing sin
-# print("\ntesting sin:")
-# func = sin(X**2 + 1)
-# print("value of function:",func.val)
-# print("derivative with respect to X: ",func.der)
-# print("Jacobian:", func.Jacobian())
 
-# # testing something complicated
-# print("\ntesting something complicated:")
-# func = exp(sin(X**2 + X))
-# print("value of function:",func.val)
-# print("derivative with respect to X: ",func.der)
-# print("Jacobian:", func.Jacobian())
+def test_multivar():
+    x, y = ad.Multi_AutoDiff_Creator(x=2, y=3).Vars
+    func = 5*x + 3*y
+    assert np.all(func.Jacobian() == [5, 3])
+
+def test_badinput():
+    with pytest.raises():
+        ad.AutoDiff("abc")
+
+
+
