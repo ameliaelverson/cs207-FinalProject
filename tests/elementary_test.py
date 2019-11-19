@@ -47,3 +47,17 @@ def test_npcosh():
     x = ad.AutoDiff(3)
     func = ad.cosh(4)*x
     assert(func.val, func.der, func.Jacobian()) == (np.cosh(4)*3, np.cosh(4),np.cosh(4))
+
+
+
+def test_sinh():
+	x = ad.AutoDiff(3)
+	func = ad.sinh(x) + ad.sinh(4)
+	assert(func.val, func.der, func.Jacobian()) == (np.sinh(3)+np.sinh(4) , np.cosh(3),np.cosh(3))
+
+
+
+def test_tan():
+	x = ad.AutoDiff(3)
+	func = ad.tan(x) + ad.tan(4)
+	assert(func.val, func.der, func.Jacobian()) == (np.tan(3)+np.tan(4) ,1/np.cos(3)**2,1/np.cos(3)**2)
