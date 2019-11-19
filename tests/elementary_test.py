@@ -40,6 +40,6 @@ def test_trig4():
 
 
 def test_math():
-    x = ad.exp(0) + ad.log(1) + ad.sqrt(1) + ad.sin(0) + ad.cos(0) + ad.tan(2) + ad.asin(0) + ad.acos(6) + ad.atan(0) + ad.sinh(0) + ad.cosh(0) + ad.tanh(0)
-    assert x == np.exp(0) + np.log(1) + np.sqrt(1) + np.sin(0) + np.cos(0) + np.tan(2) + np.arcsin(0) + np.arccos(6) + np.arctan(0) + np.sinh(0) + np.cosh(0) + np.tanh(0)
+    x = ad.exp(0) + ad.log(1) + ad.sqrt(1) + ad.sin(0) + ad.cos(0) + ad.tan(2) + ad.asin(0) + ad.acos(0) + ad.atan(0) + ad.sinh(0) + ad.cosh(0) + ad.tanh(0)
+    assert x == np.exp(0) + np.log(1) + np.sqrt(1) + np.sin(0) + np.cos(0) + np.tan(2) + np.arcsin(0) + np.arccos(0) + np.arctan(0) + np.sinh(0) + np.cosh(0) + np.tanh(0)
 
