@@ -34,5 +34,19 @@ def test_multivar():
     assert np.all(func.Jacobian() == [5, 3])
 
 
+def test_str():
+    x = ad.AutoDiff(5)
+    func = 1/x
+    assert str(func) == "f(x) = 0.20, f'(x) = -0.04"
+
+
+def test_eq():
+    x = ad.AutoDiff(20)
+    func1 = x/2 - 25
+    func2 = func1
+    assert (func1.val, func1.der, func1.Jacobian()) == (func2.val, func2.der, func2.Jacobian())
+
+
+
 
 

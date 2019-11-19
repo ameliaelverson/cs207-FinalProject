@@ -2,6 +2,7 @@ import pytest
 import numpy as np
 import autodiff32 as ad
 
+
 def test_exp():
     x = ad.AutoDiff(3)
     func = ad.exp(x)
@@ -35,7 +36,5 @@ def test_trig3():
 def test_trig4():
     x = ad.AutoDiff(.5)
     func = ad.acos(x) * ad.tanh(x)
-    assert(func.val, func.der, func.Jacobian()) == (np.arccos(.5) * np.tanh(.5), np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75)), np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75)))
-
-
+    assert(func.val, '%.15f'%(func.der), '%.15f'%(func.Jacobian())) == (np.arccos(.5) * np.tanh(.5), '%.15f'%(np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75))), '%.15f'%(np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75))))
 
