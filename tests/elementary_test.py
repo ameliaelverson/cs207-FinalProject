@@ -24,3 +24,15 @@ def test_trig2():
     x = ad.AutoDiff(2)
     func = ad.sin(x) + 2*ad.cosh(x) + 3 * ad.atan(x**2)
     assert(func.val, func.der, func.Jacobian()) == (np.sin(2) + 2 * np.cosh(2) + 3 * np.arctan(4), np.cos(2) + 2 * np.sinh(2) + 12/17, np.cos(2) + 2 * np.sinh(2) + 12/17)
+
+
+def test_trig3():
+    x = ad.AutoDiff(1)
+    func = ad.tan(x) - ad.asin((x/2)) + ad.sinh((6/x))
+    assert(func.val, func.der, func.Jacobian()) == (np.tan(1) - np.arcsin((1/2)) + np.sinh((6/1)), 1/(np.cos(1)**2) - .5/np.sqrt(.75) - 6 * np.cosh(6), 1/(np.cos(1)**2) - .5/np.sqrt(.75) - 6 * np.cosh(6))
+
+
+def test_trig4():
+    x = ad.AutoDiff(.5)
+    func = ad.acos(x) * ad.tanh(x)
+    assert(func.val, func.der, func.Jacobian()) == (np.arccos(.5) * np.tanh(.5), np.arccos(.5)/(np.cosh(.5)^2) - np.tanh(3)/(np.sqrt(.75)), np.arccos(.5)/(np.cosh(.5)^2) - np.tanh(3)/(np.sqrt(.75)))
