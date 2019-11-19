@@ -35,7 +35,7 @@ def test_trig3():
 def test_trig4():
     x = ad.AutoDiff(.5)
     func = ad.acos(x) * ad.tanh(x)
-    assert(func.val, func.der, func.Jacobian()) == (np.arccos(.5) * np.tanh(.5), np.arccos(.5)/(np.cosh(.5)^2) - np.tanh(3)/(np.sqrt(.75)), np.arccos(.5)/(np.cosh(.5)^2) - np.tanh(3)/(np.sqrt(.75)))
+    assert(func.val, func.der, func.Jacobian()) == (np.arccos(.5) * np.tanh(.5), np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(3)/(np.sqrt(.75)), np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(3)/(np.sqrt(.75)))
 
 
 
