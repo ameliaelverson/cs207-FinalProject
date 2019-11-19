@@ -48,7 +48,7 @@ def acos(x):
     try:
         return AutoDiffObj.AutoDiff(acos(x.val), (-1/np.sqrt(1 - x.val ** 2)) * x.der)
     except Exception:
-        	pass
+        	return np.arccos(x)
     
 def atan(x):
     try:
