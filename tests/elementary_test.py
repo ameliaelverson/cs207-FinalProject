@@ -38,3 +38,14 @@ def test_trig4():
     func = ad.acos(x) * ad.tanh(x)
     assert(func.val, '%.15f'%(func.der), '%.15f'%(func.Jacobian())) == (np.arccos(.5) * np.tanh(.5), '%.15f'%(np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75))), '%.15f'%(np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75))))
 
+
+def test_logerror():
+    x = ad.AutoDiff(-1)
+    with pytest.raises(Exception):
+        func = ad.log(x)
+
+
+def test_sqrterror():
+    x = ad.AutoDiff(-1)
+    with pytest.raises(Exception):
+        func = ad.sqrt(x)
