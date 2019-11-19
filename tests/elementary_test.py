@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-#import autodiff32 as ad
+import autodiff32 as ad
 
 def test_exp():
     x = ad.AutoDiff(3)
