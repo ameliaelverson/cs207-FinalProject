@@ -1,3 +1,4 @@
+
 import pytest
 import numpy as np
 import autodiff32 as ad
@@ -32,6 +33,7 @@ def test_multivar():
     x, y = ad.Multi_AutoDiff_Creator(x=2, y=3).Vars
     func = 5*x + 3*y
     assert np.all(func.Jacobian() == [5, 3])
+
 
 
 
