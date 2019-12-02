@@ -37,7 +37,7 @@ class Node:
         '''
         if not isinstance(x, cls):
             ConstantNode = cls(value = x,Graph = Graph)
-            ConstantNode.operation = "None"
+            ConstantNode.operation = "Const"
             return ConstantNode
         else:
             return x
@@ -57,6 +57,30 @@ class Node:
 
     def __radd__(self,other):
         return self.__add__(other)
+
+
+    def __sub__(self,other):
+        other = self.CheckConstant(other)
+        NewNode = Node(
+                    value = self.value - other.value,
+                    Graph = self.Graph,
+                    index1 = self.ownindex,
+                    index2 = other.ownindex,
+                    )
+        NewNode.operation = "sub"
+        return NewNode
+
+    def __rsub__(self,other):
+        other = self.CheckConstant(other)
+        NewNode = Node(
+                    value = other.value - self.value,
+                    Graph = self.Graph,
+                    index1 = other.ownindex,
+                    index2 = self.ownindex,
+                    )
+        NewNode.operation = "sub"
+        return NewNode
+
 
     def __mul__(self,other):
         other = self.CheckConstant(other)
@@ -97,6 +121,18 @@ class Node:
                 )
         NewNode.operation = "div"
         return NewNode
+
+
+    def __pow__(self,other):
+        other = Node.CheckConstant(other)
+        NewNode = Node(
+                    self.value**other.value,
+                    Graph = self.Graph,
+                    index1 = self.ownindex,
+                    index2 = other.ownindex
+                    )
+        NewNode.operation = "pow"
+        Return NewNode
 
 
 

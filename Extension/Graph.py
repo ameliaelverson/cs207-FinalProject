@@ -45,6 +45,12 @@ class ComputationalGraph:
 			elif node.operation == self.ValidOp(4):
 				node.value = self.NodeList[node.nodeleft].value/self.NodeList[node.noderight].value
 
+			elif node.operation == self.ValidOp(6):
+				node.value = self.NodeList[node.nodeleft].value-self.NodeList[node.noderight].value
+
+			elif node.operation == self.ValidOp(5):
+				node.value = self.NodeList[node.nodeleft].value**self.NodeList[node.noderight].value
+
 
 
 
@@ -62,6 +68,10 @@ class ComputationalGraph:
 				self.NodeList[node.nodeleft].deri += node.deri
 				self.NodeList[node.noderight].deri += node.deri
 
+			if node.operation == self.ValidOp(6):
+				self.NodeList[node.nodeleft].deri += node.deri
+				self.NodeList[node.noderight].deri -= node.deri
+
 			elif node.operation == self.ValidOp(2):
 				self.NodeList[node.nodeleft].deri += node.deri * self.NodeList[node.noderight].value
 				self.NodeList[node.noderight].deri += node.deri * self.NodeList[node.nodeleft].value
@@ -69,6 +79,10 @@ class ComputationalGraph:
 			elif node.operation == self.ValidOp(4):
 				self.NodeList[node.nodeleft].deri += node.deri / self.NodeList[node.noderight].value
 				self.NodeList[node.noderight].deri += -node.deri * self.NodeList[node.nodeleft].value/self.NodeList[node.noderight].value**2
+
+			elif node.operation == self.ValidOp(5):
+				self.NodeList[node.nodeleft].deri =  self.NodeList[node.noderight].value * self.NodeList[node.nodeleft].value **(self.NodeList[node.noderight].value-1)
+				# There is sth weird here
 
 
 	def clearGraph(self):
