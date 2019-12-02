@@ -22,9 +22,10 @@ class ComputationalGraph:
 		switcher ={
 			1 : "add",
 			2 : "mul",
-			3 : "exp",
-			4 : "truediv",
-			5 : "pow"
+			3 : "neg",
+			4 : "div",
+			5 : "pow",
+			6 : "sub"
 		}
 		return  switcher.get(i," Invalid Operator")
 
@@ -40,6 +41,11 @@ class ComputationalGraph:
 
 			elif node.operation == self.ValidOp(2):
 				node.value = self.NodeList[node.nodeleft].value*self.NodeList[node.noderight].value
+
+			elif node.operation == self.ValidOp(4):
+				node.value = self.NodeList[node.nodeleft].value/self.NodeList[node.noderight].value
+
+
 
 
 	def ComputeGradient(self,lastIndex):
@@ -59,6 +65,11 @@ class ComputationalGraph:
 			elif node.operation == self.ValidOp(2):
 				self.NodeList[node.nodeleft].deri += node.deri * self.NodeList[node.noderight].value
 				self.NodeList[node.noderight].deri += node.deri * self.NodeList[node.nodeleft].value
+
+			elif node.operation == self.ValidOp(4):
+				self.NodeList[node.nodeleft].deri += node.deri / self.NodeList[node.noderight].value
+				self.NodeList[node.noderight].deri += -node.deri * self.NodeList[node.nodeleft].value/self.NodeList[node.noderight].value**2
+
 
 	def clearGraph(self):
 		'''

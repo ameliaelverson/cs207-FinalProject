@@ -1,0 +1,10 @@
+For extension 
+
+1) Logic Operator  --1 hour
+2) Subtract, Power,Neg --  1 hour
+3) Vector Function -- 1hour
+4) Series of X and Y -- 1 hour
+5) Error Checking -- NA
+6) Implementation Notes and Video -- 2days
+
+7) Pytest -- NA
