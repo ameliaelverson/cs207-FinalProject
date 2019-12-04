@@ -3,8 +3,8 @@ import numpy as np
 class AutoDiff():
     
     def __init__(self, val, der = 1):
-        self.val = val
-        self.der = der
+        self.val = np.array(val)
+        self.der = np.array(der)
 
     def __mul__(self, other): # overload multiplication
         try:
@@ -45,7 +45,7 @@ class AutoDiff():
 
     def __pow__(self,other): # overload power
         try:
-            return AutoDiff(self.val ** other.val, other.val * (self.val ** (other.val - 1.0)) * self.der + (self.val ** other.val) * np.log(self.val) * other.der)
+            return AutoDiff(self.val ** other.val, other.val * (self.val ** (other.val - 1.0)) * self.der) #+ (self.val ** other.val) * np.log(self.val) * other.der)
         except AttributeError:
             return AutoDiff(self.val ** other, other * (self.val ** (other - 1.0)) * self.der)
     
