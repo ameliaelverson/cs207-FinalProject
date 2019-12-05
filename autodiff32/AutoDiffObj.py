@@ -90,8 +90,8 @@ class AutoDiff():
     def __eq__(self, other): # overload 'equal to' comparison operator
         return (self.val == other.val and self.der == other.der)
             
-    def __ne__(self, other): # overload 'not equal to' comparison operator
-        return not self==other
+    #def __ne__(self, other): # overload 'not equal to' comparison operator
+    #    return not self==other
 
     def Jacobian(self):
         """
