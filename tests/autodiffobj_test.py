@@ -51,5 +51,10 @@ def test_eq():
     func2 = func1
     assert (func1.val, func1.der, func1.Jacobian()) == (func2.val, func2.der, func2.Jacobian())
 
+def test_ne():
+    x = ad.AutoDiff(20, 1)
+    func1 = x/2 - 25
+    func2 = x/3 - 25
+    assert (func1.val, func1.der, func1.Jacobian()) != (func2.val, func2.der, func2.Jacobian())
 
 
