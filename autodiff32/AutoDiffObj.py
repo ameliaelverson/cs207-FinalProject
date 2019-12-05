@@ -3,8 +3,8 @@ import numpy as np
 class AutoDiff():
     
     def __init__(self, val, der = 1):
-        self.val = np.array(val)
-        self.der = np.array(der)
+        self.val = val
+        self.der = der
 
     def __mul__(self, other): # overload multiplication
         try:
