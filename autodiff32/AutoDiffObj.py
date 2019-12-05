@@ -5,7 +5,7 @@ class AutoDiff():
     
     INPUTS
     =======
-    A scalar value and a derivative.
+    A scalar value and a derivative
     The default derivative is 1
         
     RETURNS
@@ -14,9 +14,9 @@ class AutoDiff():
     
     NOTES
     =====
-    The AutoDiff class overloads many basic operations and comparison operators.
+    The AutoDiff class overloads many basic operations and comparison operators
     This allows for operations and comparisons to be performed on/using the
-    instantiated AutoDiff object.
+    instantiated AutoDiff object
     
     EXAMPLES
     =========
