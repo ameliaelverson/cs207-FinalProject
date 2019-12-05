@@ -88,10 +88,7 @@ class AutoDiff():
         	return "f(x) = {:.2f}, f'(x) = {:.2f}".format(self.val, self.der)
 
     def __eq__(self, other): # overload 'equal to' comparison operator
-        try:
-            return self.val == other.val and self.der == other.der
-        except AttributeError:
-            return self.val == other
+        return self.val == other.val and self.der == other.der
 
     def Jacobian(self):
         """
