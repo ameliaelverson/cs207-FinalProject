@@ -1,3 +1,5 @@
+# from __future__ import division 
+
 import numpy as np
 import autodiff32 as ad
 
@@ -30,3 +32,11 @@ class Multi_AutoDiff_Creator:
         for key, value in kwargs.items():
             self.Vars.append(ad.AutoDiff(value,deri[i]))
             i+=1
+
+            
+
+# x, y = Multi_AutoDiff_Creator(x=2, y=3).Vars
+# func = 5*x + 3*y
+
+# from Ipython import *
+# embed()

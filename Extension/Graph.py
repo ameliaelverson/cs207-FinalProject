@@ -32,8 +32,6 @@ class ComputationalGraph:
 	def ComputeValue(self):
 		'''
 		This function utilize forward pass to compute the value of the function
-
-
 		'''
 		for node in self.NodeList:
 			if node.operation == self.ValidOp(1):
@@ -54,7 +52,7 @@ class ComputationalGraph:
 
 
 
-	def ComputeGradient(self,lastIndex):
+	def ComputeGradient(self,lastIndex = -1):
 		'''
 		This function back propagate to calculate the gradient of the variables with reverse mode
 
@@ -82,6 +80,7 @@ class ComputationalGraph:
 
 			elif node.operation == self.ValidOp(5):
 				self.NodeList[node.nodeleft].deri =  self.NodeList[node.noderight].value * self.NodeList[node.nodeleft].value **(self.NodeList[node.noderight].value-1)
+
 				# There is sth weird here
 
 
@@ -93,5 +92,27 @@ class ComputationalGraph:
 		for i in self.NodeList:
 			i.deri = 0 
 
+
+	def WIPER(self,D):
+		for i in self.NodeList[D:]:
+			if i.operation != "Const":
+				i.deri = 0
+				i.value = 0
+
+	def SeriesValues(self,C,D):
+		ValList=[]
+		DerList =[]
+		for j in range(len(C)):
+			self.WIPER(D)
+			for i in range(0,D):
+				self.NodeList[i].value = C[j][i]
+			self.ComputeValue()
+			self.ComputeGradient()
+			ValList.append(self.NodeList[-1].value)
+			Deri =[]
+			for i in range(0,D):
+				 Deri.append(self.NodeList[i].deri)
+			DerList.append(Deri)
+		return ValList,DerList
 
 

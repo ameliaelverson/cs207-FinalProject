@@ -7,17 +7,17 @@ import numpy as np
 class Node:
 
     def __init__(self,value = None, Graph= None, deri = 0.0, index1 = None, index2 = None):
-
-        if Graph == None:
-            raise NotImplementError("Your Node is not Connected to any graph")
-
+        
         self.value = value
         self.deri = deri
         #if the node is left multiplied by another node, then the nodeleft is just node itself
         self.nodeleft = index1
         self.noderight = index2
         self.Graph = Graph
-        if self.Graph != None: self.ownindex = Graph.Nodeindex 
+        if Graph == None:
+            raise NotImplementError("Your Node is not Connected to any graph")
+        else:
+            self.ownindex = Graph.Nodeindex 
         #EveryTime we are creating a node, we put it into our graphs
         self.Graph.append(self)
 
@@ -132,7 +132,9 @@ class Node:
                     index2 = other.ownindex
                     )
         NewNode.operation = "pow"
-        Return NewNode
+        return NewNode
+
+
 
 
 
@@ -141,23 +143,33 @@ class Node:
 Graph = ComputationalGraph()
 X = Node(value = 3, Graph = Graph)
 Y = Node(value = 5, Graph = Graph)
-
+Z = Node(value = 1, Graph = Graph)
 #DEMO FOR Univariate Scalar Function
-F = 2*X + 3
+F = X*2+Y + Z
 Graph.ComputeValue()
 Graph.ComputeGradient(-1)
 print("The Value of the Function is",F.value)
 print("Derivative of X is:",X.deri)
 print("Derivative of Y is:",Y.deri)
+print("Derivative of Z is:",Z.deri)
+
+#Series of Values
+C = [[1,2,3],[2,3,3],[3,5,1]]
+D = 3 #Dimension 
+Vals, Ders = Graph.SeriesValues(C,D)
+
 
 print("\n")
 #DEMO FOR Multivariate Scalar Function
 G = 2*X*Y + 3*Y
 Graph.ComputeValue()
-Graph.ComputeGradient(-1)
+# Graph.ComputeGradient(-1)
 print("The Value of the Function is",G.value)
 print("Derivative of X is:",X.deri)
 print("Derivative of Y is:",Y.deri)
+
+print("\n")
+
 
 
 
