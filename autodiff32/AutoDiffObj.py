@@ -1,6 +1,32 @@
 import numpy as np
 
 class AutoDiff():
+    """ Instantiates an AutoDiff object
+    
+    INPUTS
+    =======
+    A scalar value and a derivative.
+    The default derivative is 1
+        
+    RETURNS
+    ========
+    An AutoDiff Object
+    
+    NOTES
+    =====
+    The AutoDiff class overloads many basic operations and comparison operators.
+    This allows for operations and comparisons to be performed on/using the
+    instantiated AutoDiff object.
+    
+    EXAMPLES
+    =========
+    >>> X = AutoDiff(3)
+    >>> X.val
+    3
+    >>> X.der
+    1
+    
+    """    
     
     def __init__(self, val, der = 1):
         self.val = val
