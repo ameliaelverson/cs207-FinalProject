@@ -8,11 +8,11 @@ def exp(x):
     except Exception:
         	return np.exp(x)
 
-def log(x):
+def log(x, base=np.e):
     try:
-        return AutoDiffObj.AutoDiff(np.log(x.val), (1/x.val) * x.der)
+        return AutoDiffObj.AutoDiff(np.log(x.val)/np.log(base), (1/(np.log(base) * x.val)) * x.der)
     except Exception:
-        	return np.log(x)
+        	return np.log(x)/np.log(base)
     
 def sqrt(x):
     try:

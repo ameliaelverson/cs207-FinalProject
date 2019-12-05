@@ -61,8 +61,14 @@ class AutoDiff():
     def __str__(self): # overload string
         	return "f(x) = {:.2f}, f'(x) = {:.2f}".format(self.val, self.der)
 
-    def __eq__(self, other): # overload equality
-        return (self.val == other.val and self.der == other.der)
+    def __eq__(self, other): # overload equal to comparison operator
+        try:
+            return (self.val == other.val and self.der == other.der)
+        except AttributeError:
+            return self.val == other
+            
+    def __ne__(self, other): # overload not equal to comparison operator
+        return not self==other
 
     def Jacobian(self):
         """
