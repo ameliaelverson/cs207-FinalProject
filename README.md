@@ -80,7 +80,7 @@ cs207-FinalProject/
       * Software org
         * Directory structure - update when finished
         * Modules and what they do
-        * <s>Where do tests live? How are they run? How are they integrated?
+        * <s>Where do tests live? How are they run? How are they integrated?</s>
         * How can someone install package? Should developers and consumers following different installation procedure?
       * Implementation details
         * Description of current implementation - deeper than software org
