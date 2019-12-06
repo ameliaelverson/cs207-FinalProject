@@ -27,58 +27,60 @@ cs207-FinalProject/
 </code></pre>
 
 2. Software Requirements
+  * Code is clean and well commented. TA wants higher quality docstrings.
   * Working forward mode implementation
-    * Able to handle real functions of one or more variables, including multiple functions each of multiple variables
+    * <s>Able to handle real functions of one or more variables, including multiple functions each of multiple variables</s>
     * Able to handle vector functions with multiple real scalar or vector inputs
-    * Available to download from GitHub org
-    * Installable from PyPi
-    * Requirements.txt file with dependencies
-    * Users should be "able to use without difficulty"
+    * <s>Available to download from GitHub.org</s>
+    * Installable from PyPi - need to update when finished!
+    * Requirements.txt file with dependencies - need to update when finished!
+    * <s>Users should be "able to use without difficulty"</s>
     * Functions that must be implemented
-      * Addition (commutative)
-      * Subtraction
-      * Multiplication (commutative)
-      * Division
-      * Power
+      * <s>Addition (commutative)</s>
+      * <s>Subtraction</s>
+      * <s>Multiplication (commutative)</s>
+      * <s>Division</s>
+      * <s>Power</s>
       * Negation
       * \__lt\__ - optional
       * \__gt\__ - optional
       * \__le\__ - optional
       * \__ge\__ - optional
-      * \__eq\__
+      * <s>\__eq\__</s>
       * \__ne\__
-      * Trig functions
-      * Inverse trig functions
+      * <s>Trig functions</s>
+      * <s>Inverse trig functions</s>
       * Exponentials - any base, treat natural base (e) as special case
-      * Hyperbolic functions
+      * <s>Hyperbolic functions</s>
       * Logistic funciton
-      * Logarithms - any base
-      * Square root
+      * <s>Logarithms - any base</s>
+      * <s>Square root</s>
   
   * Test suite
-    * Runs with pytest
-    * Runs automatically on Travis CI
-    * Contains badge showing pass/fail status of build.
-    * Badge must show we are passing all tests
-    * Connected to CodeCov
-    * Badge reporting coverage of code
-    * Cover > 90%
+    * <s>Runs with pytest</s>
+    * <s>Runs automatically on Travis CI</s>
+    * <s>Contains badge showing pass/fail status of build.</s>
+    * <s>Badge must show we are passing all tests</s>
+    * <s>Connected to CodeCov</s>
+    * <s>Badge reporting coverage of code</s>
+    * Confirm NO TESTS fail
+    * Cover > 90% - need to confirm when finished!
   
   
   * Updated/extended documentation
-    * Updated documentation will be the 'final' package documentation - mix of text and hand-on demos
-    * Please name it documentation. Do not name it milestone3.
+    * <s>Updated documentation will be the 'final' package documentation - mix of text and hand-on demos</s>
+    * <s>Please name it documentation. Do not name it milestone3.</s>
     * Updated background/how to use sections with additional functionality
     * Sections:
-      * Intro - describe problem, why it's important to solve
+      * <s>Intro - describe problem, why it's important to solve</s>
       * Background - including extensions
       * How to use
-        * How to install
-        * Basic demos for user - one for auto diff, one for new feature, etc.
+        * <s>How to install</s>
+        * Basic demos for user - <s>one for auto diff,</s> one for new feature, etc.
       * Software org
-        * Directory structure
+        * Directory structure - update when finished
         * Modules and what they do
-        * Where do tests live? How are they run? How are they integrated?
+        * <s>Where do tests live? How are they run? How are they integrated?
         * How can someone install package? Should developers and consumers following different installation procedure?
       * Implementation details
         * Description of current implementation - deeper than software org
