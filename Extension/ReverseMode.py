@@ -26,8 +26,7 @@ class Node:
 
         
 
-    @classmethod
-    def CheckConstant(cls,x):
+    def CheckConstant(self,x):
         '''
         Check if the node is a contant
         Input:
@@ -35,8 +34,8 @@ class Node:
         if constant
 
         '''
-        if not isinstance(x, cls):
-            ConstantNode = cls(value = x,Graph = Graph)
+        if not isinstance(x, Node):
+            ConstantNode = Node(value = x,Graph =self.Graph)
             ConstantNode.operation = "Const"
             return ConstantNode
         else:
@@ -138,42 +137,42 @@ class Node:
 
 
 
+if __name__ == "main":
+
+	Graph = ComputationalGraph()
+	X = Node(value = 3, Graph = Graph)
+	Y = Node(value = 5, Graph = Graph)
+	Z = Node(value = 1, Graph = Graph)
+	#DEMO FOR Univariate Scalar Function
+	F = X*2+Y + Z
+	Graph.ComputeValue()
+	Graph.ComputeGradient(-1)
+	print("The Value of the Function is",F.value)
+	print("Derivative of X is:",X.deri)
+	print("Derivative of Y is:",Y.deri)
+	print("Derivative of Z is:",Z.deri)
+
+	#Series of Values
+	C = [[1,2,3],[2,3,3],[3,5,1]]
+	D = 3 #Dimension 
+	Vals, Ders = Graph.SeriesValues(C,D)
 
 
-Graph = ComputationalGraph()
-X = Node(value = 3, Graph = Graph)
-Y = Node(value = 5, Graph = Graph)
-Z = Node(value = 1, Graph = Graph)
-#DEMO FOR Univariate Scalar Function
-F = X*2+Y + Z
-Graph.ComputeValue()
-Graph.ComputeGradient(-1)
-print("The Value of the Function is",F.value)
-print("Derivative of X is:",X.deri)
-print("Derivative of Y is:",Y.deri)
-print("Derivative of Z is:",Z.deri)
+	print("\n")
+	#DEMO FOR Multivariate Scalar Function
+	G = 2*X*Y + 3*Y
+	Graph.ComputeValue()
+	Graph.ComputeGradient(-1)
+	print("The Value of the Function is",G.value)
+	print("Derivative of X is:",X.deri)
+	print("Derivative of Y is:",Y.deri)
 
-#Series of Values
-C = [[1,2,3],[2,3,3],[3,5,1]]
-D = 3 #Dimension 
-Vals, Ders = Graph.SeriesValues(C,D)
-
-
-print("\n")
-#DEMO FOR Multivariate Scalar Function
-G = 2*X*Y + 3*Y
-Graph.ComputeValue()
-# Graph.ComputeGradient(-1)
-print("The Value of the Function is",G.value)
-print("Derivative of X is:",X.deri)
-print("Derivative of Y is:",Y.deri)
-
-print("\n")
+	print("\n")
 
 
 
 
 
-from IPython import *
-embed()
+	from IPython import *
+	embed()
 
