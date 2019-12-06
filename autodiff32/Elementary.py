@@ -1,18 +1,21 @@
 import numpy as np
 from autodiff32 import AutoDiffObj
 
-# Implementing elemental functions
+"""
+Elemental functions for use with AutoDiff objects
+"""
+
 def exp(x):
     try:
         return AutoDiffObj.AutoDiff(np.exp(x.val), np.dot(np.exp(x.val),x.der))
     except Exception:
         	return np.exp(x)
 
-def log(x):
+def log(x, base=np.e): # accepts any value for the base, but default is natural log
     try:
-        return AutoDiffObj.AutoDiff(np.log(x.val), (1/x.val) * x.der)
+        return AutoDiffObj.AutoDiff(np.log(x.val)/np.log(base), (1/(np.log(base) * x.val)) * x.der)
     except Exception:
-        	return np.log(x)
+        	return np.log(x)/np.log(base)
     
 def sqrt(x):
     try:
