@@ -94,22 +94,22 @@ cs207-FinalProject/
     * Full testing of extension
     * Document extension (including motivation and concepts behind it)
 
- * Video deliverable
-  * Must be narrated by all members of group
-  * Members must speak an equal amount
-  * Change speakers exactly n-1 times (everyone should speak exactly once)
-  * Time distribution:
-    * Intro/background - 2 mins
-      * min project only
-      * Don't overdo the math details - provide big ideas behind auto diff and the motivation for using it
-    * Implementation details/software organization/how to use - 4 mins
-      * min project only
-    * Additional features and extension - 5 mins
-      * include any necessary background/impelmentation/how to use, etc. for extension here.
-      * May need to present math background to get audience oriented
-    * Future work/possible extensions - 2 mins
-  * Maximum time: 15 mins
-  * Do not include actual code snippets - teaching staff has access to code.
-  * Upload to YouTube as private video - share video with course staff
+  * Video deliverable
+    * Must be narrated by all members of group
+    * Members must speak an equal amount
+    * Change speakers exactly n-1 times (everyone should speak exactly once)
+    * Time distribution:
+      * Intro/background - 2 mins
+        * min project only
+        * Don't overdo the math details - provide big ideas behind auto diff and the motivation for using it
+      * Implementation details/software organization/how to use - 4 mins
+        * min project only
+      * Additional features and extension - 5 mins
+        * include any necessary background/impelmentation/how to use, etc. for extension here.
+        * May need to present math background to get audience oriented
+      * Future work/possible extensions - 2 mins
+    * Maximum time: 15 mins
+    * Do not include actual code snippets - teaching staff has access to code.
+    * Upload to YouTube as private video - share video with course staff
     * Title must include group number
-  * Fill out video submission Google Form
+    * Fill out video submission Google Form
