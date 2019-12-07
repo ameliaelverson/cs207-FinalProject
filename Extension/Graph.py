@@ -8,12 +8,38 @@ class ComputationalGraph:
 		self.NodeList =[]
 
 	def append(self, Node):
-		'''This method append the node to the graph in sequence and record the index of that node'''
+		'''
+		This method append the node to the graph in sequence and record the index of that node
+
+		INPUTS
+		======
+
+		Node: The Node that is to be appended on the List
+
+		Return
+		======
+		None
+
+		'''
 		self.Nodeindex +=1
 		self.NodeList.append(Node)
 
+
+
 	def ValidOp(self,i):  #Valid operation
 		'''
+
+		INPUT
+		=====
+		i : The number corresponding to the operators 
+
+		Return
+		======
+		The Value of the key in the swither
+
+
+		NOTES
+		======
 		This method structurally defines a way to 
 		store all the valid operators 
 		supported by this reverse mode class 
@@ -44,6 +70,7 @@ class ComputationalGraph:
 	def ComputeValue(self):
 		'''
 		This function utilize forward pass to compute the value of the function
+
 		'''
 		for node in self.NodeList:
 			if node.operation == self.ValidOp(1):
@@ -103,6 +130,9 @@ class ComputationalGraph:
 	def ComputeGradient(self,lastIndex = -1):
 		'''
 		This function back propagate to calculate the gradient of the variables with reverse mode
+
+		INPUT 
+		=====
 
 		'''
 		#Set the seed 
@@ -184,6 +214,7 @@ class ComputationalGraph:
 	def SeriesValues(self,C,D):
 		ValList=[]
 		DerList =[]
+		C= C.T
 		for j in range(len(C)):
 			self.WIPER(D)
 			for i in range(0,D):
