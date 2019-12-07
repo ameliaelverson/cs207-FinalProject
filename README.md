@@ -70,10 +70,9 @@ cs207-FinalProject/
   * Updated/extended documentation
     * <s>Updated documentation will be the 'final' package documentation - mix of text and hand-on demos</s>
     * <s>Please name it documentation. Do not name it milestone3.</s>
-    * Updated background/how to use sections with additional functionality
     * Sections:
       * <s>Intro - describe problem, why it's important to solve</s>
-      * Background - including extensions
+      * <s> Background - including extensions </s>
       * How to use
         * <s>How to install</s>
         * Basic demos for user - <s>one for auto diff,</s> one for new feature, etc.
@@ -87,7 +86,8 @@ cs207-FinalProject/
           * Such as: core data structures, core classes, important attributes, external dependencies, elementary functions, etc.
       * Extension
         * Description of extension
-        * Additional information or background needed to understand - including mathematical or other concepts 
+        * Additional information or background needed to understand - including mathematical or other concepts
+        * Do we actually need to include additional stuff for the extension? We built it into the above sections. Waiting on response from TA. 
     
   * Extension
     * <s>Build out extension</s>
