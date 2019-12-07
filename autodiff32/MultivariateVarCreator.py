@@ -68,3 +68,15 @@ def AutoDiff_Evaluate(Vals,f):
         der.append(A.der)
   
     return val, der
+
+
+
+#DEMO
+X = [1,2,3]
+Y = [2,3,3]
+Z = [3,5,3]
+W = [3,5,3]
+VarValues = [X, Y, Z, W]
+func = lambda Vars:3*Vars[0] + 4*Vars[1] + 4*Vars[2]**2 + 3*Vars[3]# Var[0] is X, Var[1] is Y
+Values ,Derivatives = AutoDiff_Evaluate(VarValues,func)
+
