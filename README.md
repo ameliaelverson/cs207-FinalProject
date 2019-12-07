@@ -41,18 +41,18 @@ cs207-FinalProject/
       * <s>Multiplication (commutative)</s>
       * <s>Division</s>
       * <s>Power</s>
-      * Negation
+      * <s>Negation</s>
       * \__lt\__ - optional
       * \__gt\__ - optional
       * \__le\__ - optional
       * \__ge\__ - optional
       * <s>\__eq\__</s>
-      * \__ne\__
+      * <s>\__ne\__</s>
       * <s>Trig functions</s>
       * <s>Inverse trig functions</s>
-      * Exponentials - any base, treat natural base (e) as special case
+      * <s>Exponentials - any base, treat natural base (e) as special case</s>
       * <s>Hyperbolic functions</s>
-      * Logistic funciton
+      * <s>Logistic funciton</s>
       * <s>Logarithms - any base</s>
       * <s>Square root</s>
   
