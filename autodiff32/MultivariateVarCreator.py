@@ -26,27 +26,17 @@ class Multi_AutoDiff_Creator:
         
         EXAMPLES
         =========
-        >>> X,Y = Multi_AutoDiff_Creator(X = 2, Y = 4).Vars
-        >>> X.val
-        2
-        >>> X.der
-        array([1., 0.])
-        >>> Y.val
-        4
-        >>> Y.der
-        array([0., 1.])
-        
-        #UserDEMO
+
+        # For multivariate vector inputs
         X = [1,2,3]
         Y = [2,3,3]
         Z = [3,5,3]
         W = [3,5,3]
         VarValues = [X, Y, Z, W]
         func = lambda Vars:3*Vars[0] + 4*Vars[1] + 4*Vars[2]**2 + 3*Vars[3]# Var[0] is X, Var[1] is Y
-        Values ,Derivatives = AutoDiff_Evaluate(VarValues,func)
-        
         AD_Obj = AutoDiff_Evaluate(VarValues,func)
-
+        AD_Obj[0].val
+        AD_Obj[0].der
         
         """    
 #        deri = np.identity(len(kwargs))
@@ -72,4 +62,4 @@ def AutoDiff_Evaluate(Vals,f):
         AutoDiff_Objects.append(A)
         #der.append(A.der)
   
-    return AutoDiff_Objects#val, der
+    return AutoDiff_Objects #val, der
