@@ -50,13 +50,27 @@ class Multi_AutoDiff_Creator:
         AD_Obj[0].val
         AD_Obj[0].der
         
-        # For single variable vector inputs
+        # For single variable scalar inputs
         X = [1]
         VarValues = [X]
         func = lambda Vars:3*Vars[0]
         AD_Obj = AutoDiff_Evaluate(VarValues,func)
         AD_Obj[0].val
         AD_Obj[0].der
+        
+        # For single variable vector inputs
+        X = [1,2,3]
+        VarValues = [X]
+        func = lambda Vars:3*Vars[0]
+        AD_Obj = AutoDiff_Evaluate(VarValues,func)
+        AD_Obj[0].val
+        AD_Obj[0].der
+        
+        # compare to
+        X = [1,2,3]
+        func = ad.AutoDiff(X)
+        func.val
+        
         
         """    
 #        deri = np.identity(len(kwargs))
@@ -74,12 +88,15 @@ class Multi_AutoDiff_Creator:
 
 
 def AutoDiff_Evaluate(Vals,f):
-    #val = []
-    #der = []
     AutoDiff_Objects = []
-    for i in np.transpose(Vals):
-        A = f(Multi_AutoDiff_Creator(i).Vars)
-        AutoDiff_Objects.append(A)
+    if len(Vals) == 1:
+        return [ad.AutoDiff(Vals)]
+    else:
+        print(np.transpose(Vals))
+        for i in np.transpose(Vals):
+            print("i:",i)
+            A = f(Multi_AutoDiff_Creator(i).Vars)
+            AutoDiff_Objects.append(A)
         #der.append(A.der)
-  
+    AutoDiff_Objects = np.array(AutoDiff_Objects)
     return AutoDiff_Objects #val, der
