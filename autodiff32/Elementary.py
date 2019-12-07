@@ -11,6 +11,12 @@ def exp(x):
     except Exception:
         	return np.exp(x)
 
+def logistic(x):
+    try:
+        return AutoDiffObj.AutoDiff(np.exp(x.val)/(np.exp(x.val) + 1), np.dot(np.exp(x.val)/((np.exp(x.val) + 1)**2),x.der))
+    except Exception:
+        	return np.exp(x)/(np.exp(x) + 1)
+
 def log(x, base=np.e): # accepts any value for the base, but default is natural log
     try:
         return AutoDiffObj.AutoDiff(np.log(x.val)/np.log(base), (1/(np.log(base) * x.val)) * x.der)

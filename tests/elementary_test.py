@@ -8,6 +8,11 @@ def test_exp():
     func = ad.exp(x)
     assert(func.val, func.der, func.Jacobian()) == (np.exp(3), np.exp(3), np.exp(3))
 
+def test_logistic():
+    x = ad.AutoDiff(2)
+    func = ad.logistic(x)
+    assert(func.val, func.der, func.Jacobian()) == (np.exp(2)/(np.exp(2)+1), np.exp(2)/((np.exp(2)+1)**2), np.exp(2)/((np.exp(2)+1)**2))
+
 
 def test_logsqrt():
     x = ad.AutoDiff(2)
@@ -36,7 +41,9 @@ def test_trig3():
 def test_trig4():
     x = ad.AutoDiff(.5)
     func = ad.acos(x) * ad.tanh(x)
-    assert(func.val, '%.15f'%(func.der), '%.15f'%(func.Jacobian())) == (np.arccos(.5) * np.tanh(.5), '%.15f'%(np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75))), '%.15f'%(np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75))))
+    assert np.isclose( func.val, np.arccos(.5) * np.tanh(.5) )  
+    assert np.isclose( func.der, np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75)) )
+    assert np.isclose( func.Jacobian(), np.arccos(.5)/(np.cosh(.5)**2) - np.tanh(.5)/(np.sqrt(.75)))
 
 
 def test_math():
