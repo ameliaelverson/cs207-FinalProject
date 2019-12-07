@@ -1,4 +1,4 @@
-
+import numpy as np
 
 class ComputationalGraph:
 
@@ -46,12 +46,24 @@ class ComputationalGraph:
 
 		'''
 		switcher ={
-			1 : "add",
-			2 : "mul",
-			3 : "neg",
-			4 : "div",
-			5 : "pow",
-			6 : "sub"
+			1: "add",
+			2: "mul",
+			3: "neg",
+			4: "div",
+			5: "pow",
+			6: "sub",
+			7: "exp",
+			8: "log",
+			9: "sqrt",
+			10: "sin",
+			11: "cos",
+			12: "tan",
+			13: "asin",
+			14: "acos",
+			15: "atan",
+			16: "sinh",
+			17: "cosh",
+			18: "tanh"
 		}
 		return  switcher.get(i," Invalid Operator")
 
@@ -75,6 +87,42 @@ class ComputationalGraph:
 
 			elif node.operation == self.ValidOp(5):
 				node.value = self.NodeList[node.nodeleft].value**self.NodeList[node.noderight].value
+
+			elif node.operation == self.ValidOp(7):
+				node.value = np.exp(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(8):
+				node.value = np.log(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(9):
+				node.value = np.sqrt(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(10):
+				node.value = np.sin(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(11):
+				node.value = np.cos(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(12):
+				node.value = np.tan(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(13):
+				node.value = np.arcsin(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(14):
+				node.value = np.arccos(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(15):
+				node.value = np.arctan(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(16):
+				node.value = np.sinh(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(17):
+				node.value = np.cosh(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(18):
+				node.value = np.tanh(self.NodeList[node.nodeleft].value)
 
 
 
@@ -109,9 +157,43 @@ class ComputationalGraph:
 				self.NodeList[node.noderight].deri += -node.deri * self.NodeList[node.nodeleft].value/self.NodeList[node.noderight].value**2
 
 			elif node.operation == self.ValidOp(5):
-				self.NodeList[node.nodeleft].deri =  self.NodeList[node.noderight].value * self.NodeList[node.nodeleft].value **(self.NodeList[node.noderight].value-1)
+				self.NodeList[node.nodeleft].deri += self.NodeList[node.noderight].value * self.NodeList[node.nodeleft].value **(self.NodeList[node.noderight].value-1)
 
-				# There is sth weird here
+			elif node.operation == self.ValidOp(7):
+				self.NodeList[node.nodeleft].deri += np.exp(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(8):
+				self.NodeList[node.nodeleft].deri += 1 / self.NodeList[node.nodeleft].value
+
+			elif node.operation == self.ValidOp(9):
+				self.NodeList[node.nodeleft].deri += 1/(2*np.sqrt(self.NodeList[node.nodeleft].value))
+
+			elif node.operation == self.ValidOp(10):
+				self.NodeList[node.nodeleft].deri += np.cos(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(11):
+				self.NodeList[node.nodeleft].deri += -1*np.sin(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(12):
+				self.NodeList[node.nodeleft].deri += 1/((np.cos(self.NodeList[node.nodeleft].value))**2)
+
+			elif node.operation == self.ValidOp(13):
+				self.NodeList[node.nodeleft].deri += 1/(np.sqrt(1 - self.NodeList[node.nodeleft].value ^ 2))
+
+			elif node.operation == self.ValidOp(14):
+				self.NodeList[node.nodeleft].deri += -1/(np.sqrt(1 - self.NodeList[node.nodeleft].value ^ 2))
+
+			elif node.operation == self.ValidOp(15):
+				self.NodeList[node.nodeleft].deri += 1/(1 + self.NodeList[node.nodeleft].value ^ 2)
+
+			elif node.operation == self.ValidOp(16):
+				self.NodeList[node.nodeleft].deri += np.cosh(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(17):
+				self.NodeList[node.nodeleft].deri += np.sinh(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(18):
+				self.NodeList[node.nodeleft].deri += 1 / ((np.cosh(self.NodeList[node.nodeleft].value)) ** 2)
 
 
 	def clearGraph(self):
