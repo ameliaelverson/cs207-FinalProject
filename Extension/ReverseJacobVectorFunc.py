@@ -61,14 +61,14 @@ class ReverseVecFunc:
         Jacobian=[]
         for item in self.function:
             F = item
-            V,De = self.SeriesValues(Graph,F,C,D)
+            V,De = self.Wrapper(Graph,F,C,D)
             Val.append(V)
             Jacobian.append(De)
 
 
         return np.array(Val).T, np.array(Jacobian)
 
-    def SeriesValues(self,Graph,F,C,D):
+    def Wrapper(self,Graph,F,C,D):
         ValList=[]
         DerList =[]
         C = C.T
@@ -111,8 +111,11 @@ z = [3,8,1]
 C = np.array([x,y,z])
 D = 3 #Dimension 
 G = np.array([-2*X,
-               2*Y + Z,
-               3*X+3*Y+2*Z])
+               2*Y + Z*Y,
+               3*X+3*Y*X+2*Z])
 Func = ReverseVecFunc(G,X =X,Y= Y,Z= Z)
+Vals,Deris=Func.Seriesvalue(C,D)
+print(Vals)
+print(Deris)
 from IPython import *
 embed()
