@@ -38,6 +38,26 @@ class Multi_AutoDiff_Creator:
         AD_Obj[0].val
         AD_Obj[0].der
         
+        
+        # For multivariate scalar inputs
+        X = [1]
+        Y = [2]
+        Z = [3]
+        W = [3]
+        VarValues = [X, Y, Z, W]
+        func = lambda Vars:3*Vars[0] + 4*Vars[1] + 4*Vars[2]**2 + 3*Vars[3]# Var[0] is X, Var[1] is Y
+        AD_Obj = AutoDiff_Evaluate(VarValues,func)
+        AD_Obj[0].val
+        AD_Obj[0].der
+        
+        # For single variable vector inputs
+        X = [1]
+        VarValues = [X]
+        func = lambda Vars:3*Vars[0]
+        AD_Obj = AutoDiff_Evaluate(VarValues,func)
+        AD_Obj[0].val
+        AD_Obj[0].der
+        
         """    
 #        deri = np.identity(len(kwargs))
 #        i = 0 
