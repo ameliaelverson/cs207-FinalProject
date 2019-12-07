@@ -153,7 +153,7 @@ if __name__ == "main":
 	print("Derivative of Z is:",Z.deri)
 
 	#Series of Values
-	C = [[1,2,3],[2,3,3],[3,5,1]]
+	C = np.array([[1,2,3],[2,3,3],[3,5,1]])
 	D = 3 #Dimension 
 	Vals, Ders = Graph.SeriesValues(C,D)
 
