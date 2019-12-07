@@ -24,8 +24,6 @@ class Node:
         #Record whether it is a single node or a node which is combined by operation 
         self.operation = None
 
-        
-
     def CheckConstant(self,x):
         '''
         Check if the node is a contant
@@ -41,8 +39,7 @@ class Node:
         else:
             return x
 
-
-    def __add__(self,other):
+    def __add__(self, other):
         other = self.CheckConstant(other)
         NewNode = Node(
                     value = self.value + other.value,
@@ -53,12 +50,10 @@ class Node:
         NewNode.operation = "add"
         return NewNode
 
-
     def __radd__(self,other):
         return self.__add__(other)
 
-
-    def __sub__(self,other):
+    def __sub__(self, other):
         other = self.CheckConstant(other)
         NewNode = Node(
                     value = self.value - other.value,
@@ -69,7 +64,7 @@ class Node:
         NewNode.operation = "sub"
         return NewNode
 
-    def __rsub__(self,other):
+    def __rsub__(self, other):
         other = self.CheckConstant(other)
         NewNode = Node(
                     value = other.value - self.value,
@@ -80,8 +75,7 @@ class Node:
         NewNode.operation = "sub"
         return NewNode
 
-
-    def __mul__(self,other):
+    def __mul__(self, other):
         other = self.CheckConstant(other)
         NewNode = Node(
                     value = self.value*other.value,
@@ -93,10 +87,8 @@ class Node:
         NewNode.operation = "mul"
         return NewNode
 
-
-    def __rmul__(self,other):
+    def __rmul__(self, other):
         return self.__mul__(other)
-
 
     def __truediv__(self, other):
         other = Node.CheckConstant(other)
@@ -109,8 +101,7 @@ class Node:
         NewNode.operation = "div"
         return NewNode
 
-
-    def __rtruediv__(self,other):
+    def __rtruediv__(self, other):
         other = Node.CheckConstant(other)
         NewNode =  Node(
                 self.value / other.value,
@@ -121,9 +112,8 @@ class Node:
         NewNode.operation = "div"
         return NewNode
 
-
     def __pow__(self,other):
-        other = Node.CheckConstant(other)
+        other = self.CheckConstant(other)
         NewNode = Node(
                     self.value**other.value,
                     Graph = self.Graph,
@@ -133,46 +123,96 @@ class Node:
         NewNode.operation = "pow"
         return NewNode
 
+    def __neg__(self):
+        return self * -1
+
+    def __eq__(self, other):
+        return self.Graph == other.Graph
+
+
+def exp(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.exp(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "exp"
+    return NewNode
+
+
+def log(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.log(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "log"
+    return NewNode
+
+
+def sqrt(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.sqrt(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "sqrt"
+    return NewNode
+
+
+def sin(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.sin(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "sin"
+    return NewNode
+
+
+def cos(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.cos(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "cos"
+    return NewNode
+
+
+def tan(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.tan(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "tan"
+    return NewNode
+
+
+def asin(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.arcsin(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "asin"
+    return NewNode
+
+
+def acos(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.arccos(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "acos"
+    return NewNode
+
+
+def atan(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.arctan(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "atan"
+    return NewNode
+
+
+def sinh(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.sinh(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "sinh"
+    return NewNode
+
+
+def cosh(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.cosh(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "cosh"
+    return NewNode
+
+
+def tanh(x):
+    x = Node.CheckConstant(x, x)
+    NewNode = Node(np.tanh(x.value), x.Graph, index1=x.ownindex, index2=None)
+    NewNode.operation = "tanh"
+    return NewNode
 
 
 
-
-if __name__ == "main":
-
-	Graph = ComputationalGraph()
-	X = Node(value = 3, Graph = Graph)
-	Y = Node(value = 5, Graph = Graph)
-	Z = Node(value = 1, Graph = Graph)
-	#DEMO FOR Univariate Scalar Function
-	F = X*2+Y + Z
-	Graph.ComputeValue()
-	Graph.ComputeGradient(-1)
-	print("The Value of the Function is",F.value)
-	print("Derivative of X is:",X.deri)
-	print("Derivative of Y is:",Y.deri)
-	print("Derivative of Z is:",Z.deri)
-
-	#Series of Values
-	C = [[1,2,3],[2,3,3],[3,5,1]]
-	D = 3 #Dimension 
-	Vals, Ders = Graph.SeriesValues(C,D)
-
-
-	print("\n")
-	#DEMO FOR Multivariate Scalar Function
-	G = 2*X*Y + 3*Y
-	Graph.ComputeValue()
-	Graph.ComputeGradient(-1)
-	print("The Value of the Function is",G.value)
-	print("Derivative of X is:",X.deri)
-	print("Derivative of Y is:",Y.deri)
-
-	print("\n")
-
-
-
-
-
-	from IPython import *
-	embed()
 
