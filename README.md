@@ -30,7 +30,7 @@ cs207-FinalProject/
   * Code is clean and well commented. TA wants higher quality docstrings.
   * Working forward mode implementation
     * <s>Able to handle real functions of one or more variables, including multiple functions each of multiple variables</s>
-    * Able to handle vector functions with multiple real scalar or vector inputs
+    * <s>Able to handle vector functions with multiple real scalar or vector inputs</s>
     * <s>Available to download from GitHub.org</s>
     * Installable from PyPi - need to update when finished!
     * Requirements.txt file with dependencies - need to update when finished!
@@ -90,7 +90,7 @@ cs207-FinalProject/
         * Additional information or background needed to understand - including mathematical or other concepts 
     
   * Extension
-    * Build out extension
+    * <s>Build out extension</s>
     * Full testing of extension
     * Document extension (including motivation and concepts behind it)
 
