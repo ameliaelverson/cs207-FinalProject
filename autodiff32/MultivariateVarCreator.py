@@ -3,6 +3,7 @@ import autodiff32 as ad
 
 class Multi_AutoDiff_Creator:
     
+    #def __init__(self, *args, **kwargs):
     def __init__(self,Vals): #Now the user need to input values as a list with the first one specifying the first val for first val and so on
 
         """Instantiates multiple AutoDiff objects
@@ -44,6 +45,9 @@ class Multi_AutoDiff_Creator:
         func = lambda Vars:3*Vars[0] + 4*Vars[1] + 4*Vars[2]**2 + 3*Vars[3]# Var[0] is X, Var[1] is Y
         Values ,Derivatives = AutoDiff_Evaluate(VarValues,func)
         
+        AD_Obj = AutoDiff_Evaluate(VarValues,func)
+
+        
         """    
 #        deri = np.identity(len(kwargs))
 #        i = 0 
@@ -60,11 +64,12 @@ class Multi_AutoDiff_Creator:
 
 
 def AutoDiff_Evaluate(Vals,f):
-    val = []
-    der = []
+    #val = []
+    #der = []
+    AutoDiff_Objects = []
     for i in np.transpose(Vals):
         A = f(Multi_AutoDiff_Creator(i).Vars)
-        val.append(A.val)
-        der.append(A.der)
+        AutoDiff_Objects.append(A)
+        #der.append(A.der)
   
-    return val, der
+    return AutoDiff_Objects#val, der
