@@ -10,7 +10,7 @@ class AutoDiff():
         
     RETURNS
     ========
-    An AutoDiff object
+    An AutoDiff Object
     
     NOTES
     =====
@@ -18,8 +18,13 @@ class AutoDiff():
     This allows for operations and comparisons to be performed on/using the
     instantiated AutoDiff object
     
-    This class will not be directly called by the user
-    Instead the user should use the AutoDiff_Eval function
+    EXAMPLES
+    =========
+    >>> X = AutoDiff(3)
+    >>> X.val
+    3
+    >>> X.der
+    1
     
     """    
     
