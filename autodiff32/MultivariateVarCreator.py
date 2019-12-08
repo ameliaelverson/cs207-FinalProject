@@ -1,7 +1,7 @@
 import numpy as np
 import autodiff32 as ad
 
-class Multi_AutoDiff_Creator:
+class MultiVar_AutoDiff_Creator:
 
     def __init__(self,*args,**kwargs):
         """Instantiates multiple AutoDiff objects
@@ -24,7 +24,7 @@ class Multi_AutoDiff_Creator:
         
         EXAMPLES
         =========
-        >>> X,Y = Multi_AutoDiff_Creator(X = 2, Y = 4).Vars
+        >>> X,Y = MultiVar_AutoDiff_Creator(X = 2, Y = 4).Vars
         >>> X.val
         2
         >>> X.der
@@ -35,6 +35,12 @@ class Multi_AutoDiff_Creator:
         array([0., 1.])
         
         """    
+        
+#        deri = np.identity(len(Vals))
+#        self.Vars =[]
+#        for i in range(len(Vals)):
+#          self.Vars.append(ad.AutoDiff(Vals[i],deri[i]))
+          
         deri = np.identity(len(kwargs))
         i = 0 
         self.Vars =[]
