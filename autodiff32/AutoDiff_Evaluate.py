@@ -60,6 +60,14 @@ def AutoDiff_Evaluate(Vals,f):
     print(Values)
     print(Derivatives)
     
+    # To find the Jacobian
+    X = [1,2,3]
+    VarValues = [X]
+    func = lambda Vars:np.array([3*Vars[0], Vars[0]**2])
+    Values, Derivatives = AutoDiff_Evaluate(VarValues,func)
+    print(Values)
+    print(Derivatives)
+    
     """
     Values = []
     Ders = []
