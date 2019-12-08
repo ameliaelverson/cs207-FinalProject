@@ -29,9 +29,9 @@ def AutoDiff_Evaluate(Vals,f):
     W = [3,5,3]
     VarValues = [X, Y, Z, W]
     func = lambda Vars:3*Vars[0] + 4*Vars[1] + 4*Vars[2]**2 + 3*Vars[3]# Var[0] is X, Var[1] is Y
-    AD_Obj = AutoDiff_Evaluate(VarValues,func)
-    AD_Obj[0].val
-    AD_Obj[0].der
+    Values, Derivatives = AutoDiff_Evaluate(VarValues,func)
+    print(Values)
+    print(Derivatives)
         
     # For multivariate scalar inputs
     X = [1]
@@ -40,36 +40,43 @@ def AutoDiff_Evaluate(Vals,f):
     W = [3]
     VarValues = [X, Y, Z, W]
     func = lambda Vars:3*Vars[0] + 4*Vars[1] + 4*Vars[2]**2 + 3*Vars[3]# Var[0] is X, Var[1] is Y
-    AD_Obj = AutoDiff_Evaluate(VarValues,func)
-    AD_Obj[0].val
-    AD_Obj[0].der
+    Values, Derivatives = AutoDiff_Evaluate(VarValues,func)
+    print(Values)
+    print(Derivatives)
     
     # For single variable scalar inputs
     X = [1]
     VarValues = [X]
     func = lambda Vars:3*Vars[0]
-    AD_Obj = AutoDiff_Evaluate(VarValues,func)
-    AD_Obj[0].val
-    AD_Obj[0].der
+    Values, Derivatives = AutoDiff_Evaluate(VarValues,func)
+    print(Values)
+    print(Derivatives)
     
     # For single variable vector inputs
     X = [1,2,3]
     VarValues = [X]
     func = lambda Vars:3*Vars[0]
-    AD_Obj = AutoDiff_Evaluate(VarValues,func)
-    AD_Obj[0].val
-    AD_Obj[0].der
+    Values, Derivatives = AutoDiff_Evaluate(VarValues,func)
+    print(Values)
+    print(Derivatives)
     
     """
-
-    AutoDiff_Objects = []
-    if len(Vals) == 1:
-        return [ad.AutoDiff(Vals)]
-    else:
-        for i in np.transpose(Vals):
-            A = f(ad.Multi_AutoDiffObj_Creator(i).Vars)
-            AutoDiff_Objects.append(A)
-    AutoDiff_Objects = np.array(AutoDiff_Objects)
-    return AutoDiff_Objects
+    Values = []
+    Ders = []
+    for i in np.transpose(Vals):
+        val = []
+        der = []
+        A = f(ad.Multi_AutoDiffObj_Creator(i).Vars)
+        try:
+            for j in A:
+                val.append(j.val)
+                der.append(j.der)
+            Values.append(val)
+            Ders.append(der)
+        except:
+            Values.append(A.val)
+            Ders.append(A.der)
+    
+    return np.array(Values), np.array(Ders)
 
 
