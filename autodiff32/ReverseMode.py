@@ -134,6 +134,6 @@ class Node:
 
     def __eq__(self, other):
         other = self.CheckConstant(other)
-        return self.Graph == other.Graph and self.value == other.value
+        return self.Graph == other.Graph and self.value == other.value and self.ownindex == other.ownindex
 
 
