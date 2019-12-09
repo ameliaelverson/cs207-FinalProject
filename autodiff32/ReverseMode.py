@@ -123,6 +123,12 @@ class Node:
         NewNode.operation = "pow"
         return NewNode
 
+    def __rpow__(self, other):
+        other = self.CheckConstant(other)
+        NewNode = Node(other.value**self.value, Graph=self.Graph, index1=other.ownindex, index2=self.ownindex)
+        NewNode.operation = "rpow"
+        return NewNode
+
     def __neg__(self):
         return self * -1
 

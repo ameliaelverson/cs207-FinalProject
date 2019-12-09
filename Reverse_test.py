@@ -37,7 +37,7 @@ def test_powers():
     func = x**x
     Graph.ComputeValue()
     Graph.ComputeGradient()
-    assert(func.val, x.deri) == (4, 4*(np.log(2)+1))
+    assert(func.value, x.deri) == (4, 4*(np.log(2)+1))
 
 
 #def test_series():
@@ -49,14 +49,14 @@ def test_powers():
 
 
 def test_jacobian():
-    Graph = ad.ComputationGraph()
+    Graph = ad.ComputationalGraph()
     x = ad.Node(value=3, Graph=Graph)
     y = ad.Node(value=5, Graph=Graph)
     z = ad.Node(value=1, Graph=Graph)
     f = np.array([-2*x, 2*y+z, 3*x+3*y+2*z])
     func = ad.ReverseVecFunc(f, x, y, z)
     val, jacobian = func.value(Graph)
-    assert(val, jacobian) == ([-6, 11, 26], [[-2, 0, 0], [0, 2, 1], [3, 3, 2]])
+    assert np.all((val, jacobian) == ([-6, 11, 26], [[-2, 0, 0], [0, 2, 1], [3, 3, 2]]))
 
 
 def test_jacobian_series():
@@ -70,7 +70,7 @@ def test_jacobian_series():
     f = np.array([x * 3, 5 * y ** 2])
     func = ad.ReverseVecFunc(f, x=x, y=y)
     vals, derivs = func.Seriesvalue(C, D, Graph)
-    assert (vals, derivs) == ([[3, 20], [9, 80]], [[[3, 0], [3, 0]], [0, 20], [0, 40]])
+    assert np.all((vals, derivs) == ([[3, 20], [9, 80]], [[[3, 0], [3, 0]], [0, 20], [0, 40]]))
 
 def test_exp():
     Graph = ad.ComputationalGraph()
@@ -101,7 +101,7 @@ def test_trig1():
 def test_trig2():
     Graph = ad.ComputationalGraph()
     x = ad.Node(value=0, Graph=Graph)
-    func = ad.asinr(x) * ad.acosr(x**2) + 2*ad.atanr()
+    func = ad.asinr(x) * ad.acosr(x**2) + 2*ad.atanr(x)
     Graph.ComputeValue()
     Graph.ComputeGradient()
     assert (func.value, x.deri) == (0, 2+2*np.arccos(0))
@@ -125,3 +125,10 @@ def test_trig3():
 #D = 3
 #Vals, Ders = Graph.SeriesValues(C=C, D=D, Graph=Graph)
 #print(Vals)
+
+#Graph = ad.ComputationalGraph()
+#x = ad.Node(value=3, Graph=Graph)
+#func = x**x
+#Graph.ComputeValue()
+#Graph.ComputeGradient()
+#print(func.value, x.deri)

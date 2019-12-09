@@ -63,7 +63,8 @@ class ComputationalGraph:
 			15: "atan",
 			16: "sinh",
 			17: "cosh",
-			18: "tanh"
+			18: "tanh",
+			19: "rpow"
 		}
 		return  switcher.get(i," Invalid Operator")
 
@@ -123,6 +124,9 @@ class ComputationalGraph:
 
 			elif node.operation == self.ValidOp(18):
 				node.value = np.tanh(self.NodeList[node.nodeleft].value)
+
+			elif node.operation == self.ValidOp(19):
+				node.value = self.NodeList[node.nodeleft].value**self.NodeList[node.noderight].value
 
 
 
@@ -194,6 +198,9 @@ class ComputationalGraph:
 
 			elif node.operation == self.ValidOp(18):
 				self.NodeList[node.nodeleft].deri += node.deri / ((np.cosh(self.NodeList[node.nodeleft].value)) ** 2)
+
+			elif node.operation == self.ValidOp(19):
+				self.NodeList[node.noderight].deri += node.deri * (self.NodeList[node.nodeleft].value ** self.NodeList[node.noderight].value) * np.log(self.NodeList[node.noderight].value)
 
 
 	def clearGraph(self):
