@@ -56,7 +56,7 @@ def test_jacobian():
     f = np.array([-2*x, 2*y+z, 3*x+3*y+2*z])
     func = ad.ReverseVecFunc(f, x=x, y=y, z=z)
     val, jacobian = func.value(Graph)
-    assert np.all((val, jacobian) == ([-6, 11, 26], [[-2, 0, 0], [0, 2, 1], [3, 3, 2]]))
+    assert np.array_equal(val, [-6, 11, 26]) and np.array_equal(jacobian, [[-2, 0, 0], [0, 2, 1], [3, 3, 2]])
 
 
 def test_jacobian_series():
@@ -104,7 +104,7 @@ def test_trig2():
     func = ad.asinr(x) * ad.acosr(x**2) + 2*ad.atanr(x)
     Graph.ComputeValue()
     Graph.ComputeGradient()
-    assert (func.value, x.deri) == (0, 2+2*np.arccos(0))
+    assert (func.value, x.deri) == (0, 2+np.arccos(0))
 
 
 def test_trig3():
