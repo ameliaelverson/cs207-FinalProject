@@ -54,7 +54,7 @@ def test_jacobian():
     y = ad.Node(value=5, Graph=Graph)
     z = ad.Node(value=1, Graph=Graph)
     f = np.array([-2*x, 2*y+z, 3*x+3*y+2*z])
-    func = ad.ReverseVecFunc(f, x, y, z)
+    func = ad.ReverseVecFunc(f, x=x, y=y, z=z)
     val, jacobian = func.value(Graph)
     assert np.all((val, jacobian) == ([-6, 11, 26], [[-2, 0, 0], [0, 2, 1], [3, 3, 2]]))
 
@@ -70,7 +70,7 @@ def test_jacobian_series():
     f = np.array([x * 3, 5 * y ** 2])
     func = ad.ReverseVecFunc(f, x=x, y=y)
     vals, derivs = func.Seriesvalue(C, D, Graph)
-    assert np.all((vals, derivs) == ([[3, 20], [9, 80]], [[[3, 0], [3, 0]], [0, 20], [0, 40]]))
+    assert np.array_equal(vals, [[3, 20], [9, 80]]) and np.array_equal(derivs, [[[3, 0], [3, 0]], [[0, 20], [0, 40]]])
 
 def test_exp():
     Graph = ad.ComputationalGraph()
@@ -132,3 +132,4 @@ def test_trig3():
 #Graph.ComputeValue()
 #Graph.ComputeGradient()
 #print(func.value, x.deri)
+

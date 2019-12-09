@@ -182,13 +182,13 @@ class ComputationalGraph:
 				self.NodeList[node.nodeleft].deri += node.deri/((np.cos(self.NodeList[node.nodeleft].value))**2)
 
 			elif node.operation == self.ValidOp(13):
-				self.NodeList[node.nodeleft].deri += node.deri/(np.sqrt(1 - self.NodeList[node.nodeleft].value ^ 2))
+				self.NodeList[node.nodeleft].deri += node.deri/(np.sqrt(1 - self.NodeList[node.nodeleft].value ** 2))
 
 			elif node.operation == self.ValidOp(14):
-				self.NodeList[node.nodeleft].deri += -node.deri/(np.sqrt(1 - self.NodeList[node.nodeleft].value ^ 2))
+				self.NodeList[node.nodeleft].deri += -node.deri/(np.sqrt(1 - self.NodeList[node.nodeleft].value ** 2))
 
 			elif node.operation == self.ValidOp(15):
-				self.NodeList[node.nodeleft].deri += node.deri/(1 + self.NodeList[node.nodeleft].value ^ 2)
+				self.NodeList[node.nodeleft].deri += node.deri/(1 + self.NodeList[node.nodeleft].value ** 2)
 
 			elif node.operation == self.ValidOp(16):
 				self.NodeList[node.nodeleft].deri += node.deri*np.cosh(self.NodeList[node.nodeleft].value)
