@@ -35,7 +35,7 @@ cs207-FinalProject/
     * Installable from PyPi - need to update when finished!
     * Requirements.txt file with dependencies - need to update when finished!
     * <s>Users should be "able to use without difficulty"</s>
-    * Functions that must be implemented
+    * <s>Functions that must be implemented</s>
       * <s>Addition (commutative)</s>
       * <s>Subtraction</s>
       * <s>Multiplication (commutative)</s>
@@ -91,7 +91,7 @@ cs207-FinalProject/
     
   * Extension
     * <s>Build out extension</s>
-    * Full testing of extension
+    * <s>Full testing of extension
     * Document extension (including motivation and concepts behind it)
 
   * Video deliverable
@@ -111,5 +111,5 @@ cs207-FinalProject/
     * Maximum time: 15 mins
     * Do not include actual code snippets - teaching staff has access to code.
     * Upload to YouTube as private video - share video with course staff
-    * Title must include group number
+    *   Title must include group number
     * Fill out video submission Google Form
