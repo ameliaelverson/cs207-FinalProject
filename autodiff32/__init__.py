@@ -6,5 +6,4 @@ from .MultivariateVarCreator import Multi_AutoDiff_Creator
 from .Graph import ComputationalGraph
 from .ElementaryReverse import *
 from .ReverseJacobVectorFunc import ReverseVecFunc
-from .ReverseMode import *
 
