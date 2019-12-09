@@ -35,11 +35,6 @@ class Multi_AutoDiff_Creator:
         array([0., 1.])
         
         """    
-        
-#        deri = np.identity(len(Vals))
-#        self.Vars =[]
-#        for i in range(len(Vals)):
-#          self.Vars.append(ad.AutoDiff(Vals[i],deri[i]))
           
         deri = np.identity(len(kwargs))
         i = 0 
