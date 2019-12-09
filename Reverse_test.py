@@ -121,7 +121,7 @@ def test_trig3():
 #Graph = ad.ComputationalGraph()
 #x = ad.Node(value=1, Graph=Graph)
 #f = x**2
-#C = [4, 2, 3]
+#C = np.ndarray([4, 2, 3])
 #D = 3
 #Vals, Ders = Graph.SeriesValues(C=C, D=D, Graph=Graph)
 #print(Vals)

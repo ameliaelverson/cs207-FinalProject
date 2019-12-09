@@ -1,7 +1,7 @@
 from __future__ import division 
 import numpy as np
-from Graph import ComputationalGraph
-from ReverseMode import Node 
+from .Graph import ComputationalGraph
+from .ReverseMode import Node
 
 class ReverseVecFunc:
     def __init__(self,args,**kwargs):

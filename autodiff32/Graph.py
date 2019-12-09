@@ -212,19 +212,20 @@ class ComputationalGraph:
 				i.value = 0
 
 	def SeriesValues(self,C,D, Graph):
-		ValList=[]
-		DerList =[]
+		ValList = []
+		DerList = []
+		C = C.T
 		for j in range(len(C)):
 			self.WIPER(D)
-			for i in range(0,D):
-				self.NodeList[i].value = C[i]
-			self.ComputeValue()
-			self.ComputeGradient()
+			for i in range(0, D):
+				self.NodeList[i].value = C[j][i]
+			Graph.ComputeValue()
+			Graph.ComputeGradient()
 			ValList.append(self.NodeList[-1].value)
-			Deri =[]
-			for i in range(0,D):
+			Deri = []
+			for i in range(0, D):
 				Deri.append(self.NodeList[i].deri)
 			DerList.append(Deri)
-		return ValList,DerList
+		return ValList, DerList
 
 

@@ -1,6 +1,5 @@
-
-from ReverseMode import Node
-from Graph import ComputationalGraph
+from .ReverseMode import Node
+from .Graph import ComputationalGraph
 import numpy as np
 
 def expr(x):
@@ -85,4 +84,3 @@ def tanhr(x):
     NewNode = Node(np.tanh(x.value), x.Graph, index1=x.ownindex, index2=None)
     NewNode.operation = "tanh"
     return NewNode
-

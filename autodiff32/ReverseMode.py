@@ -1,6 +1,6 @@
 # Extension 
 from __future__ import division 
-from Graph import ComputationalGraph
+from .Graph import ComputationalGraph
 import numpy as np
 
 
