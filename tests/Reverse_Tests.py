@@ -1,7 +1,7 @@
 import pytest
 import math
 import numpy as np
-import Extension as ad
+import autodiff32 as ad
 
 def test_submulti():
     Graph = ad.ComputationalGraph()
@@ -75,7 +75,7 @@ def test_jacobian_series():
 def test_exp():
     Graph = ad.ComputationalGraph()
     x = ad.Node(value=3, Graph=Graph)
-    func = ad.exp(x)
+    func = ad.expr(x)
     Graph.ComputeValue()
     Graph.ComputeGradient()
     assert (func.value, x.deri) == (np.exp(3), np.exp(3))
@@ -83,7 +83,7 @@ def test_exp():
 def test_logsqrt():
     Graph = ad.ComputationalGraph()
     x = ad.Node(value=2, Graph=Graph)
-    func = ad.sqrt(ad.log(x))
+    func = ad.sqrtr(ad.logr(x))
     Graph.ComputeValue()
     Graph.ComputeGradient()
     assert (func.value, x.deri) == (np.sqrt(np.log(2)), .25 * (1 / (np.sqrt(np.log(2)))))
@@ -92,7 +92,7 @@ def test_logsqrt():
 def test_trig1():
     Graph = ad.ComputationalGraph()
     x = ad.Node(value=math.pi, Graph=Graph)
-    func = ad.cos(x) - ad.sin(2*x) + ad.tan(x)
+    func = ad.cosr(x) - ad.sinr(2*x) + ad.tanr(x)
     Graph.ComputeValue()
     Graph.ComputeGradient()
     assert (func.value, x.deri) == (-1, -1)
@@ -101,7 +101,7 @@ def test_trig1():
 def test_trig2():
     Graph = ad.ComputationalGraph()
     x = ad.Node(value=0, Graph=Graph)
-    func = ad.asin(x) * ad.acos(x**2) + 2*ad.atan()
+    func = ad.asinr(x) * ad.acosr(x**2) + 2*ad.atanr()
     Graph.ComputeValue()
     Graph.ComputeGradient()
     assert (func.value, x.deri) == (0, 2+2*np.arccos(0))
@@ -110,7 +110,7 @@ def test_trig2():
 def test_trig3():
     Graph = ad.ComputationalGraph()
     x = ad.Node(value=0, Graph=Graph)
-    func = ad.sinh(x) + ad.cosh(x) + ad.tanh(x)
+    func = ad.sinhr(x) + ad.coshr(x) + ad.tanhr(x)
     Graph.ComputeValue()
     Graph.ComputeGradient()
     assert (func.value, x.deri) == (1, 2)
