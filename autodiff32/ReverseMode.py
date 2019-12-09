@@ -91,7 +91,7 @@ class Node:
         return self.__mul__(other)
 
     def __truediv__(self, other):
-        other = Node.CheckConstant(other)
+        other = self.CheckConstant(other)
         NewNode= Node(
                 self.value / other.value,
                 Graph = self.Graph,
@@ -102,12 +102,12 @@ class Node:
         return NewNode
 
     def __rtruediv__(self, other):
-        other = Node.CheckConstant(other)
+        other = self.CheckConstant(other)
         NewNode =  Node(
-                self.value / other.value,
+                other.value / self.value,
                 Graph = self.Graph,
                 index1 = other.ownindex,
-                index2 = own.ownindex
+                index2 = self.ownindex
                 )
         NewNode.operation = "div"
         return NewNode
@@ -133,6 +133,7 @@ class Node:
         return self * -1
 
     def __eq__(self, other):
-        return self.Graph == other.Graph
+        other = self.CheckConstant(other)
+        return self.Graph == other.Graph and self.value == other.value
 
 

@@ -22,6 +22,14 @@ def test_addnegexp():
     assert(func.value, x.deri) == (47, 19)
 
 
+def test_div():
+    Graph = ad.ComputationalGraph()
+    x = ad.Node(value=5, Graph=Graph)
+    func = 1 / x + x/2
+    Graph.ComputeValue()
+    Graph.ComputeGradient()
+    assert (func.value, x.deri) == (2.7, .46)
+
 def test_revpower():
     Graph = ad.ComputationalGraph()
     x = ad.Node(value=2, Graph=Graph)
@@ -63,6 +71,7 @@ def test_jacobian_series():
     vals, derivs = func.Seriesvalue(C, D, Graph)
     assert np.array_equal(vals, [[3, 20], [9, 80]]) and np.array_equal(derivs, [[[3, 0], [3, 0]], [[0, 20], [0, 40]]])
 
+
 def test_exp():
     Graph = ad.ComputationalGraph()
     x = ad.Node(value=3, Graph=Graph)
@@ -70,6 +79,7 @@ def test_exp():
     Graph.ComputeValue()
     Graph.ComputeGradient()
     assert (func.value, x.deri) == (np.exp(3), np.exp(3))
+
 
 def test_logsqrt():
     Graph = ad.ComputationalGraph()
@@ -116,5 +126,4 @@ def test_trig3():
 #D = 1
 #Vals, Ders = Graph.SeriesValues(C=C, D=D, Graph=Graph)
 #print(Vals)
-
 
