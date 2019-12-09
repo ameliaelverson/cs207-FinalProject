@@ -116,6 +116,8 @@ def test_trig3():
     assert (func.value, x.deri) == (1, 2)
 
 
+
+
 #Graph = ad.ComputationalGraph()
 #x = ad.Node(value=1, Graph=Graph)
 #f = x**2
