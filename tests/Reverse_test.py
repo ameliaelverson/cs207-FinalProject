@@ -96,7 +96,7 @@ def test_trig1():
     func = ad.cosr(x) - ad.sinr(2*x) + ad.tanr(x)
     Graph.ComputeValue()
     Graph.ComputeGradient()
-    assert (func.value, x.deri) == (np.cos(math.pi) - np.sin(2*math.pi) + np.tan(math.pi), -2*np.cos(2*math.pi)-np.sin(math.pi)+(1/np.cos(math.pi)**2))
+    assert abs(func.value - (-1)) < .000001 and abs(x.deri - (-1)) < .000001
 
 
 def test_trig2():
@@ -127,3 +127,9 @@ def test_trig3():
 #Vals, Ders = Graph.SeriesValues(C=C, D=D, Graph=Graph)
 #print(Vals)
 
+Graph = ad.ComputationalGraph()
+x = ad.Node(value=3.14, Graph=Graph)
+func = ad.cosr(x) - ad.sinr(2*x) + ad.tanr(x)
+Graph.ComputeValue()
+Graph.ComputeGradient()
+print (func.value, x.deri)
