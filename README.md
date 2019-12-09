@@ -91,7 +91,7 @@ cs207-FinalProject/
     
   * Extension
     * <s>Build out extension</s>
-    * <s>Full testing of extension
+    * <s>Full testing of extension</s>
     * Document extension (including motivation and concepts behind it)
 
   * Video deliverable
