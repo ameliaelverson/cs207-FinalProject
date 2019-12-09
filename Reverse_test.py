@@ -31,15 +31,6 @@ def test_revpower():
     assert(func.value, x.deri) == (-2, -4*np.log(2))
 
 
-def test_powers():
-    Graph = ad.ComputationalGraph()
-    x = ad.Node(value=2, Graph=Graph)
-    func = x**x
-    Graph.ComputeValue()
-    Graph.ComputeGradient()
-    assert(func.value, x.deri) == (4, 4*(np.log(2)+1))
-
-
 #def test_series():
  #   Graph=ad.ComputationalGraph()
 
@@ -119,17 +110,11 @@ def test_trig3():
 
 
 #Graph = ad.ComputationalGraph()
-#x = ad.Node(value=1, Graph=Graph)
+#x = ad.Node(value=5, Graph=Graph)
 #f = x**2
 #C = np.ndarray([4, 2, 3])
-#D = 3
+#D = 1
 #Vals, Ders = Graph.SeriesValues(C=C, D=D, Graph=Graph)
 #print(Vals)
 
-#Graph = ad.ComputationalGraph()
-#x = ad.Node(value=3, Graph=Graph)
-#func = x**x
-#Graph.ComputeValue()
-#Graph.ComputeGradient()
-#print(func.value, x.deri)
 
