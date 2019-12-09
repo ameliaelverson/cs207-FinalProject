@@ -1,7 +1,7 @@
 import numpy as np
 import autodiff32 as ad
 
-class MultiVar_Vector_AutoDiff_Creator:
+class Multi_Vector_AutoDiff_Creator:
     
     def __init__(self,Vals): 
 

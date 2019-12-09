@@ -38,6 +38,22 @@ def test_multivar():
     func = 5*x + 3*y
     assert np.all(func.Jacobian() == [5, 3])
 
+def test_multivar_vector():
+     X = [1,2,3]
+     Y = [2,3,3]
+     VarValues = [X, Y]
+     func = lambda Vars:np.array([1*Vars[0] + 1*Vars[1],    # first function
+                                  1*Vars[0] + 1*Vars[1]])   # second function
+     Values, Derivatives = ad.MultiVarVector_AutoDiff_Evaluate(VarValues,func)
+     assert Values == np.array([[ 3, 3],
+                                [ 5, 5],
+                                [ 6, 6]])
+     assert Derivatives == np.array([[[1., 1.],
+                                      [1., 1.]],
+                                     [[1., 1.],
+                                      [1., 1.]],
+                                     [[1., 1.],
+                                      [1., 1.]]])
 
 def test_str():
     x = ad.AutoDiff(5)

@@ -74,7 +74,7 @@ def MultiVarVector_AutoDiff_Evaluate(Vals,f):
     for i in np.transpose(Vals):
         val = []
         der = []
-        A = f(ad.MultiVar_Vector_AutoDiff_Creator(i).Vars)
+        A = f(ad.Multi_Vector_AutoDiff_Creator(i).Vars)
         try:
             for j in A:
                 val.append(j.val)

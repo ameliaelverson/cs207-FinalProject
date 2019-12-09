@@ -1,7 +1,7 @@
 import numpy as np
 import autodiff32 as ad
 
-class MultiVar_AutoDiff_Creator:
+class Multi_AutoDiff_Creator:
 
     def __init__(self,*args,**kwargs):
         """Instantiates multiple AutoDiff objects
@@ -24,7 +24,7 @@ class MultiVar_AutoDiff_Creator:
         
         EXAMPLES
         =========
-        >>> X,Y = MultiVar_AutoDiff_Creator(X = 2, Y = 4).Vars
+        >>> X,Y = Multi_AutoDiff_Creator(X = 2, Y = 4).Vars
         >>> X.val
         2
         >>> X.der
