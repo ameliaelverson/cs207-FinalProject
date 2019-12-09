@@ -20,7 +20,7 @@ class ReverseVecFunc:
             self.Vars.append(value)
   
 
-    def value(self):
+    def value(self, Graph):
         '''
         This function computes the value and the Jacobian matrix for reversemode AD 
 
@@ -30,15 +30,15 @@ class ReverseVecFunc:
         Return value and Jacobian of the vector Func
 
         '''
-        Val=[]
-        Jacobian=[]
+        Val = []
+        Jacobian = []
         for item in self.function:
             Jac =[]
             F = item
             Graph.ComputeValue()
             Graph.ComputeGradient(F.ownindex)
             Val.append(Graph.NodeList[F.ownindex].value)
-            for j in range (len(self.Vars)):
+            for j in range(len(self.Vars)):
                 Jac.append(Graph.NodeList[j].deri)
             Jacobian.append(Jac)
 
@@ -47,7 +47,7 @@ class ReverseVecFunc:
         return np.array(Val), np.array(Jacobian)
 
 
-    def Seriesvalue(self,C,D):
+    def Seriesvalue(self,C,D, Graph):
         '''
         This function computes the series of value and the Jacobian matrix for reversemode AD 
 
@@ -65,10 +65,11 @@ class ReverseVecFunc:
             Val.append(V)
             Jacobian.append(De)
         Jacobian = np.array(Jacobian)
-        R = map(lambda x,y,z:np.array([x,y,z]), Jacobian[0], Jacobian[1], Jacobian[2])
+        R=[]
+        for i in range(len(Jacobian)):
+            R.append(Jacobian[i][1])
+        return np.array(Val).T, Jacobian
 
-
-        return np.array(Val).T, list(R)
 
     def Wrapper(self,Graph,F,C,D):
         ValList=[]
@@ -91,10 +92,10 @@ class ReverseVecFunc:
 
 # if __name__ == "main":
 
-Graph = ComputationalGraph()
-X = Node(value = 3, Graph = Graph)
-Y = Node(value = 5, Graph = Graph)
-Z = Node(value = 1, Graph = Graph)
+#Graph = ComputationalGraph()
+#X = Node(value = 3, Graph = Graph)
+#Y = Node(value = 5, Graph = Graph)
+#Z = Node(value = 1, Graph = Graph)
 
 #VectorFunction 
 # G = np.array([-2*X,
@@ -107,17 +108,17 @@ Z = Node(value = 1, Graph = Graph)
 # print(Deri)
 
 
-x = [1,2,3]
-y = [6,7,4]
-z = [3,8,1]
-C = np.array([x,y,z])
-D = 3 #Dimension 
-G = np.array([-2*X,
-               2*Y + Z*Y,
-               3*X+3*Y*X+2*Z])
-Func = ReverseVecFunc(G,X =X,Y= Y,Z= Z)
-Vals,Deris=Func.Seriesvalue(C,D)
-print(Vals)
-print(Deris)
-from IPython import *
-embed()
+#x = [1,2,3]
+#y = [6,7,4]
+#z = [3,8,1]
+#C = np.array([x,y,z])
+#D = 3 #Dimension
+#G = np.array([-2*X,
+#               2*Y + Z*Y,
+#               3*X+3*Y*X+2*Z])
+#Func = ReverseVecFunc(G,X =X,Y= Y,Z= Z)
+#Vals,Deris=Func.Seriesvalue(C,D)
+#print(Vals)
+#print(Deris)
+#from IPython import *
+#embed()

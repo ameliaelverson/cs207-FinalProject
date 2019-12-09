@@ -157,43 +157,43 @@ class ComputationalGraph:
 				self.NodeList[node.noderight].deri += -node.deri * self.NodeList[node.nodeleft].value/self.NodeList[node.noderight].value**2
 
 			elif node.operation == self.ValidOp(5):
-				self.NodeList[node.nodeleft].deri += self.NodeList[node.noderight].value * self.NodeList[node.nodeleft].value **(self.NodeList[node.noderight].value-1)
+				self.NodeList[node.nodeleft].deri += node.deri*self.NodeList[node.noderight].value * self.NodeList[node.nodeleft].value **(self.NodeList[node.noderight].value-1)
 
 			elif node.operation == self.ValidOp(7):
-				self.NodeList[node.nodeleft].deri += np.exp(self.NodeList[node.nodeleft].value)
+				self.NodeList[node.nodeleft].deri += node.deri*np.exp(self.NodeList[node.nodeleft].value)
 
 			elif node.operation == self.ValidOp(8):
-				self.NodeList[node.nodeleft].deri += 1 / self.NodeList[node.nodeleft].value
+				self.NodeList[node.nodeleft].deri += node.deri / self.NodeList[node.nodeleft].value
 
 			elif node.operation == self.ValidOp(9):
-				self.NodeList[node.nodeleft].deri += 1/(2*np.sqrt(self.NodeList[node.nodeleft].value))
+				self.NodeList[node.nodeleft].deri += node.deri/(2*np.sqrt(self.NodeList[node.nodeleft].value))
 
 			elif node.operation == self.ValidOp(10):
-				self.NodeList[node.nodeleft].deri += np.cos(self.NodeList[node.nodeleft].value)
+				self.NodeList[node.nodeleft].deri += node.deri*np.cos(self.NodeList[node.nodeleft].value)
 
 			elif node.operation == self.ValidOp(11):
-				self.NodeList[node.nodeleft].deri += -1*np.sin(self.NodeList[node.nodeleft].value)
+				self.NodeList[node.nodeleft].deri += node.deri*-1*np.sin(self.NodeList[node.nodeleft].value)
 
 			elif node.operation == self.ValidOp(12):
-				self.NodeList[node.nodeleft].deri += 1/((np.cos(self.NodeList[node.nodeleft].value))**2)
+				self.NodeList[node.nodeleft].deri += node.deri/((np.cos(self.NodeList[node.nodeleft].value))**2)
 
 			elif node.operation == self.ValidOp(13):
-				self.NodeList[node.nodeleft].deri += 1/(np.sqrt(1 - self.NodeList[node.nodeleft].value ^ 2))
+				self.NodeList[node.nodeleft].deri += node.deri/(np.sqrt(1 - self.NodeList[node.nodeleft].value ^ 2))
 
 			elif node.operation == self.ValidOp(14):
-				self.NodeList[node.nodeleft].deri += -1/(np.sqrt(1 - self.NodeList[node.nodeleft].value ^ 2))
+				self.NodeList[node.nodeleft].deri += -node.deri/(np.sqrt(1 - self.NodeList[node.nodeleft].value ^ 2))
 
 			elif node.operation == self.ValidOp(15):
-				self.NodeList[node.nodeleft].deri += 1/(1 + self.NodeList[node.nodeleft].value ^ 2)
+				self.NodeList[node.nodeleft].deri += node.deri/(1 + self.NodeList[node.nodeleft].value ^ 2)
 
 			elif node.operation == self.ValidOp(16):
-				self.NodeList[node.nodeleft].deri += np.cosh(self.NodeList[node.nodeleft].value)
+				self.NodeList[node.nodeleft].deri += node.deri*np.cosh(self.NodeList[node.nodeleft].value)
 
 			elif node.operation == self.ValidOp(17):
-				self.NodeList[node.nodeleft].deri += np.sinh(self.NodeList[node.nodeleft].value)
+				self.NodeList[node.nodeleft].deri += node.deri*np.sinh(self.NodeList[node.nodeleft].value)
 
 			elif node.operation == self.ValidOp(18):
-				self.NodeList[node.nodeleft].deri += 1 / ((np.cosh(self.NodeList[node.nodeleft].value)) ** 2)
+				self.NodeList[node.nodeleft].deri += node.deri / ((np.cosh(self.NodeList[node.nodeleft].value)) ** 2)
 
 
 	def clearGraph(self):
@@ -211,20 +211,19 @@ class ComputationalGraph:
 				i.deri = 0
 				i.value = 0
 
-	def SeriesValues(self,C,D):
+	def SeriesValues(self,C,D, Graph):
 		ValList=[]
 		DerList =[]
-		C= C.T
 		for j in range(len(C)):
 			self.WIPER(D)
 			for i in range(0,D):
-				self.NodeList[i].value = C[j][i]
+				self.NodeList[i].value = C[i]
 			self.ComputeValue()
 			self.ComputeGradient()
 			ValList.append(self.NodeList[-1].value)
 			Deri =[]
 			for i in range(0,D):
-				 Deri.append(self.NodeList[i].deri)
+				Deri.append(self.NodeList[i].deri)
 			DerList.append(Deri)
 		return ValList,DerList
 
