@@ -7,6 +7,19 @@ import numpy as np
 class Node:
 
     def __init__(self,value = None, Graph= None, deri = 0.0, index1 = None, index2 = None):
+
+        '''
+        This is a Single AutoDiff Object for reverse mode
+
+        INPUT
+        =====
+        value : The value of the graph
+        Graph : The Graph that to be connected
+        deri: The derivative of the node (which defult is zero)
+        index1 : the index of the left node     //if the node is left multiplied/div/etc.  by another node, then the nodeleft is just node itself
+        index2 : the index of the right node  //if the node is right multiplied/div/sub etc. by another node, then the nodeleft is just node itself
+
+        '''
         
         self.value = value
         self.deri = deri
@@ -27,9 +40,14 @@ class Node:
     def CheckConstant(self,x):
         '''
         Check if the node is a contant
-        Input:
+        INPUT
+        ======
         x: A node or a constant 
-        if constant
+        if constant return a new Node
+
+        RETURN
+        ======
+        Node
 
         '''
         if not isinstance(x, Node):
