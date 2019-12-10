@@ -35,7 +35,7 @@ cs207-FinalProject/
     * Installable from PyPi - need to update when finished!
     * Requirements.txt file with dependencies - need to update when finished!
     * <s>Users should be "able to use without difficulty"</s>
-    * Functions that must be implemented
+    * <s>Functions that must be implemented</s>
       * <s>Addition (commutative)</s>
       * <s>Subtraction</s>
       * <s>Multiplication (commutative)</s>
@@ -70,10 +70,9 @@ cs207-FinalProject/
   * Updated/extended documentation
     * <s>Updated documentation will be the 'final' package documentation - mix of text and hand-on demos</s>
     * <s>Please name it documentation. Do not name it milestone3.</s>
-    * Updated background/how to use sections with additional functionality
     * Sections:
       * <s>Intro - describe problem, why it's important to solve</s>
-      * Background - including extensions
+      * <s> Background - including extensions </s>
       * How to use
         * <s>How to install</s>
         * Basic demos for user - <s>one for auto diff,</s> one for new feature, etc.
@@ -87,11 +86,12 @@ cs207-FinalProject/
           * Such as: core data structures, core classes, important attributes, external dependencies, elementary functions, etc.
       * Extension
         * Description of extension
-        * Additional information or background needed to understand - including mathematical or other concepts 
+        * Additional information or background needed to understand - including mathematical or other concepts
+        * Do we actually need to include additional stuff for the extension? We built it into the above sections. Waiting on response from TA. 
     
   * Extension
     * <s>Build out extension</s>
-    * Full testing of extension
+    * <s>Full testing of extension</s>
     * Document extension (including motivation and concepts behind it)
 
   * Video deliverable
@@ -111,5 +111,5 @@ cs207-FinalProject/
     * Maximum time: 15 mins
     * Do not include actual code snippets - teaching staff has access to code.
     * Upload to YouTube as private video - share video with course staff
-    * Title must include group number
+    *   Title must include group number
     * Fill out video submission Google Form

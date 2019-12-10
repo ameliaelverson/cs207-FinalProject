@@ -13,12 +13,12 @@ class Jacobian:
     
     EXAMPLES
     =========
-    >>> X,Y = Multi_AutoDiff_Creator(X = 2, Y = 4).Vars
+    >>> X,Y = MultiVar_AutoDiff_Creator(X = 2, Y = 4).Vars
     >>> func = np.array([X+Y, 2*X*Y])
     >>> J = Jacobian(func)
     >>> print(J.value())
     [[1. 1.]
-    [8. 4.]]   
+    [8. 4.]]
     
     """ 
     def __init__(self,vector_func):
