@@ -1,3 +1,5 @@
+# from __future__ import division 
+
 import numpy as np
 import autodiff32 as ad
 
@@ -42,5 +44,4 @@ class Multi_AutoDiff_Creator:
         for key, value in kwargs.items():
             self.Vars.append(ad.AutoDiff(value,deri[i]))
             i+=1
-            
-        
+
