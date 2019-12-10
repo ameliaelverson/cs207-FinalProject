@@ -68,7 +68,7 @@ class ReverseVecFunc:
         R=[]
         for i in range(len(Jacobian)):
             R.append(Jacobian[i][1])
-        return np.array(Val).T, Jacobian
+        return np.array(Val).T, np.array(R)
 
 
     def Wrapper(self,Graph,F,C,D):
