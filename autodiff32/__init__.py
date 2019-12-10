@@ -7,4 +7,5 @@ from .Graph import ComputationalGraph
 from .ElementaryReverse import *
 from .ReverseJacobVectorFunc import ReverseVecFunc
 from .ReverseMode import Node
-
+from .MultivariateVectorVarCreator import Multi_Vector_AutoDiff_Creator
+from .MultivariateVectorAutoDiffEvaluate import *

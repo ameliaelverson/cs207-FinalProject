@@ -1,6 +1,32 @@
 import numpy as np
 
 class AutoDiff():
+    """ Instantiates an AutoDiff object
+    
+    INPUTS
+    =======
+    A scalar value and a derivative
+    The default derivative is 1
+        
+    RETURNS
+    ========
+    An AutoDiff Object
+    
+    NOTES
+    =====
+    The AutoDiff class overloads many basic operations and comparison operators
+    This allows for operations and comparisons to be performed on/using the
+    instantiated AutoDiff object
+    
+    EXAMPLES
+    =========
+    >>> X = AutoDiff(3)
+    >>> X.val
+    3
+    >>> X.der
+    1
+    
+    """    
     
     def __init__(self, val, der = 1):
         self.val = val
@@ -61,7 +87,7 @@ class AutoDiff():
     def __str__(self): # overload string
         	return "f(x) = {:.2f}, f'(x) = {:.2f}".format(self.val, self.der)
 
-    def __eq__(self, other): # overload equality
+    def __eq__(self, other): # overload 'equal to' comparison operator
         return (self.val == other.val and self.der == other.der)
 
     def Jacobian(self):

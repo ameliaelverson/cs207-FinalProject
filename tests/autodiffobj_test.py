@@ -38,6 +38,32 @@ def test_multivar():
     func = 5*x + 3*y
     assert np.all(func.Jacobian() == [5, 3])
 
+def test_multivar_vector():
+     X = [1,2,3]
+     Y = [2,3,3]
+     VarValues = [X, Y]
+     func = lambda Vars:np.array([1*Vars[0] + 1*Vars[1],    # first function
+                                  1*Vars[0] + 1*Vars[1]])   # second function
+     Values, Derivatives = ad.MultiVarVector_AutoDiff_Evaluate(VarValues,func)
+     assert Values[0][0] == 3
+     assert Values[0][1] == 3
+     assert Values[1][0] == 5 
+     assert Values[1][1] == 5
+     assert Values[2][0] == 6
+     assert Values[2][1] == 6
+     assert Derivatives[0][0][0] == 1
+     assert Derivatives[0][0][0] == 1
+     assert Derivatives[0][1][0] == 1
+     assert Derivatives[0][1][1] == 1
+     assert Derivatives[1][0][0] == 1
+     assert Derivatives[1][0][0] == 1
+     assert Derivatives[1][1][0] == 1
+     assert Derivatives[1][1][1] == 1
+     assert Derivatives[2][0][0] == 1
+     assert Derivatives[2][0][0] == 1
+     assert Derivatives[2][1][0] == 1
+     assert Derivatives[2][1][1] == 1
+
 
 def test_str():
     x = ad.AutoDiff(5)
@@ -51,5 +77,10 @@ def test_eq():
     func2 = func1
     assert (func1.val, func1.der, func1.Jacobian()) == (func2.val, func2.der, func2.Jacobian())
 
+def test_ne():
+    x = ad.AutoDiff(20, 1)
+    func1 = x/2 - 25
+    func2 = x/3 - 25
+    assert (func1.val, func1.der, func1.Jacobian()) != (func2.val, func2.der, func2.Jacobian())
 
 
