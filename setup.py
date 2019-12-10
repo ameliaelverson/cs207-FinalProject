@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
 	name = "autodiff32",
-	version = "0.1.0",
+	version = "0.1.2",
 	author = "Amelia Elverson, Aaron Jacobson, Eric Moreira, Lin Zhu",
 	author_email = "aelverson@mba2020.hbs.edu",
 	description = "Automatic Differentiator",
