@@ -71,7 +71,7 @@ def test_jacobian_series():
     f = np.array([x * 3, 5 * y ** 2])
     func = ad.ReverseVecFunc(f, x=x, y=y)
     vals, derivs = func.Seriesvalue(C, D, Graph)
-    assert np.array_equal(vals, [[3, 20], [9, 80]]) and np.array_equal(derivs, [[[3, 0], [0，20]], [[3, 0], [0, 40]]])
+    assert np.array_equal(vals, [[3, 20], [9, 80]]) and np.array_equal(derivs, [[[3, 0], [0,20]], [[3, 0], [0, 40]]])
 
 
 def test_exp():
