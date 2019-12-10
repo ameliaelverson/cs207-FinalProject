@@ -72,6 +72,24 @@ class ReverseVecFunc:
 
 
     def Wrapper(self,Graph,F,C,D):
+        '''
+        NOTE
+        =====
+        This function is wrapper function aiming to solve for the derivative and the value for a single vector function for an array of numbers
+
+        INPUT
+        ======
+        Graph: The graph needed to compute the value and the derivatives
+        F: The vector Function that needed to be evaluated 
+        C: The array of numbers that needs to be evaluated
+        D: The number of variables that needs to be evaluated
+
+
+        RETURN
+        =======
+        The value and the derivative for a particular scalar function
+
+        '''
         ValList=[]
         DerList =[]
         C = C.T
