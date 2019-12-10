@@ -42,31 +42,3 @@ class Multi_AutoDiff_Creator:
         for key, value in kwargs.items():
             self.Vars.append(ad.AutoDiff(value,deri[i]))
             i+=1
-            
-        
-<<<<<<< HEAD
-
-
-def AutoDiff_Evaluate(Vals,f):
-    val = []
-    der = []
-    for i in np.transpose(Vals):
-        A = f(Multi_AutoDiff_Creator(i).Vars)
-        val.append(A.val)
-        der.append(A.der)
-  
-    return val, der
-
-
-
-#DEMO
-X = [1,2,3]
-Y = [2,3,3]
-Z = [3,5,3]
-W = [3,5,3]
-VarValues = [X, Y, Z, W]
-func = lambda Vars:3*Vars[0] + 4*Vars[1] + 4*Vars[2]**2 + 3*Vars[3]# Var[0] is X, Var[1] is Y
-Values ,Derivatives = AutoDiff_Evaluate(VarValues,func)
-
-=======
->>>>>>> 075a5c26d0e7f22e3931af87498d7d4a7b9d2a57
