@@ -120,11 +120,3 @@ def test_trig3():
 
 
 
-
-
-Graph = ad.ComputationalGraph()
-x = ad.Node(value=3, Graph=Graph)
-func = ad.sqrtr(4) + x
-Graph.ComputeValue()
-Graph.ComputeGradient()
-print (func.value, x.deri)
