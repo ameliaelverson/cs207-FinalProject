@@ -90,4 +90,16 @@ class AutoDiff():
     def __eq__(self, other): # overload 'equal to' comparison operator
         return (self.val == other.val and self.der == other.der)
 
-   
+    def Jacobian(self):
+        """
+        INPUTS
+        =======
+        None
+        
+        RETURNS
+        ========
+        The Jacobian of the function.
+        If the function is univariate, then the Jacobian is just the derivative
+        If the function is multivariate, then the Jacobian will be an array.
+        """
+        return self.der
