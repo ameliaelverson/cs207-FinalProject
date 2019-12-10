@@ -100,10 +100,6 @@ class AutoDiff():
         ========
         The Jacobian of the function.
         If the function is univariate, then the Jacobian is just the derivative
-
         If the function is multivariate, then the Jacobian will be an array.
-
         """
         return self.der
-
-   
