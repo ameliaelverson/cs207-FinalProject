@@ -39,12 +39,14 @@ def test_revpower():
     assert(func.value, x.deri) == (-2, -4*np.log(2))
 
 
-#def test_series():
- #   Graph=ad.ComputationalGraph()
-
-  #  C = [[1, 2, 3], [2, 3, 3], [3, 5, 1]]
-   # D = 3
-    #Vals, Ders = Graph.SeriesValues(C, D)
+def test_series():
+    Graph = ad.ComputationalGraph()
+    x = ad.Node(value=5, Graph=Graph)
+    f = x ** 2
+    C = np.array([[4, 2, 3]])
+    D = 1
+    Vals, Ders = Graph.SeriesValues(C, D, Graph)
+    assert np.array_equal(Vals, [16, 4, 9]) and np.array_equal(Ders, [[8], [4], [6]])
 
 
 def test_jacobian():
@@ -119,17 +121,10 @@ def test_trig3():
 
 
 
-#Graph = ad.ComputationalGraph()
-#x = ad.Node(value=5, Graph=Graph)
-#f = x**2
-#C = np.ndarray([4, 2, 3])
-#D = 1
-#Vals, Ders = Graph.SeriesValues(C=C, D=D, Graph=Graph)
-#print(Vals)
 
 Graph = ad.ComputationalGraph()
-x = ad.Node(value=3.14, Graph=Graph)
-func = ad.cosr(x) - ad.sinr(2*x) + ad.tanr(x)
+x = ad.Node(value=3, Graph=Graph)
+func = ad.sqrtr(4) + x
 Graph.ComputeValue()
 Graph.ComputeGradient()
 print (func.value, x.deri)
